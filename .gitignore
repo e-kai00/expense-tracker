@@ -8,3 +8,4 @@ node_modules/
 .github/
 cloudinary_python.txt 
 tracker_env/
+*sqlite3
