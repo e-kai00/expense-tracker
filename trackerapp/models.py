@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models import Sum
 from django.contrib.auth.models import User
+from datetime import date
 
 
 class AccountCategory(models.Model):
@@ -44,14 +45,14 @@ class ExpenseCategory(models.Model):
 
     def get_total_expenses(self):
         total = 0
-        expense = Transactions.objects.filter(categoty_name=self)
+        expenses = Transactions.objects.filter(expense_categoty=self)
         for expense in expenses:
             total += expense.amount
         return total
 
 
     def show_category_expenses(self):
-        expenses_list = Transactions.objects.filter(category=self)
+        expenses_list = Transactions.objects.filter(expense_category=self)
         return expenses_list
 
 
@@ -65,5 +66,57 @@ class Transactions(models.Model):
     transaction_type = models.CharField(max_length=7, unique=True, choices=TRANSACTION_TYPE_CHOICE)
     transaction_date = models.DateField()
     notes = models.TextField()
+
+
+    def __str__(self):
+        return f'{self.transaction_type} - {self.amount}'
+    
+
+    def transactions_list(self):
+        return Transactions.objects.filter(user=self.user)
+    
+
+    def get_total_expenses(self):
+        total = 0
+        expenses_list = Transactions.objects.filter(user=self.user, transaction_type='Expense')
+        for expense in expenses_list:
+            total += expense.amount
+        return total
+    
+
+    def get_total_income(self):
+        total = 0
+        income_list = Transactions.objects.filter(user=self.user, transaction_type='Income')
+        for income in income_list:
+            total += income.amount
+        return total
+    
+
+    def get_balance(self):
+        balance = 0
+        transactions = Transactions.objects.filter(user=self.user)
+        for transaction in transactions:
+            if transaction.transaction_type == 'Income':
+                balance += transaction.amount
+            else:
+                balance -= transaction.amount
+        return balance
+    
+
+    def filter_by_month(self, month):
+        current_year = date.today().year
+        return Transactions.objects.filter(
+            user=self.user, 
+            transaction_date__month=month, 
+            transaction_date__year=current_year
+        )
+
+    
+
+    # filter by month     +
+    # list transaction    +
+    # calculate balance   +
+    # total expense       +
+    # total income        +
 
    
