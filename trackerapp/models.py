@@ -4,36 +4,47 @@ from django.contrib.auth.models import User
 from datetime import date
 
 
-class AccountCategory(models.Model):
+#---------- ACCOUNT CATEGORY (e.g. cash, savings, cards)
+class AccountCategory(models.Model):    
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    account_name = models.CharField(max_length=200, unique=True)
-    balance = models.DecimalField(max_digits=10, decimal_places=2)
+    account_name = models.CharField(max_length=200, unique=True, default='Cash')
+    balance = models.DecimalField(max_digits=10, decimal_places=2)  
 
 
     def __str__(self):
         return self.account_name
     
 
+    def total_balance(self):
+        total_balance = Transactions.objects.filter(user=self.user)
+        return total_balance.get_balance()
+    
+
     def update_balance(self, amount, operation):
+        current_balance = self.total_balance()
         if operation == 'add':
-            self.balance += amount
+            current_balance += amount
         else:
-            self.balance -= amount
-        
+            current_balance -= amount        
+        self.balance = current_balance
         self.save()
 
 
     def is_sufficient_balance(self, amount):
-        return self.balance >= amount
+        return self.total_balance() >= amount
     
 
-    @classmethod
-    def calculate_total_balance(cls, user):
-        total_balance = cls.objects.filter(user=user).aaggregate(total_balance=Sum('balance'))
-        return total_balance['total_balance']
+    def trasfer_funds(self, target_account, amount):
+        if self.is_sufficient_balance(amount):
+            self.update_balance(amount, 'subtract')
+            target_account.update_balance(amount, 'add')
+            return True
+        else:
+            False
     
-
+    
+#---------- EXPENSES CATEGORIS
 class ExpenseCategory(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -42,7 +53,7 @@ class ExpenseCategory(models.Model):
     def __str__(self):
         return self.category_name
     
-
+    # total expenses by category
     def get_total_expenses(self):
         total = 0
         expenses = Transactions.objects.filter(expense_categoty=self)
@@ -50,12 +61,13 @@ class ExpenseCategory(models.Model):
             total += expense.amount
         return total
 
-
+    # list of transactions by category
     def show_category_expenses(self):
         expenses_list = Transactions.objects.filter(expense_category=self)
         return expenses_list
 
 
+#---------- TRANSACTIONS
 class Transactions(models.Model):
     TRANSACTION_TYPE_CHOICE = (('Expense', 'Expense'), ('Income', 'Income'))
 
@@ -69,7 +81,7 @@ class Transactions(models.Model):
 
 
     def __str__(self):
-        return f'{self.transaction_type} - {self.amount}'
+        return f'{self.expense_category} - {self.transaction_type} - {self.amount}'       
     
 
     def transactions_list(self):
@@ -113,10 +125,6 @@ class Transactions(models.Model):
 
     
 
-    # filter by month     +
-    # list transaction    +
-    # calculate balance   +
-    # total expense       +
-    # total income        +
+   
 
    
