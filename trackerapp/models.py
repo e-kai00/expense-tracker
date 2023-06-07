@@ -74,9 +74,9 @@ class Transactions(models.Model):
     account_category = models.ForeignKey(AccountCategory, on_delete=models.CASCADE)
     expense_category = models.ForeignKey(ExpenseCategory, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
-    transaction_type = models.CharField(max_length=7, unique=True, choices=TRANSACTION_TYPE_CHOICE)
+    transaction_type = models.CharField(max_length=7, choices=TRANSACTION_TYPE_CHOICE)
     transaction_date = models.DateField()
-    notes = models.TextField()
+    notes = models.TextField(blank=True)
 
 
     def __str__(self):

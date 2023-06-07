@@ -13,5 +13,4 @@ def index(request):
     return render(request, 'trackerapp/index.html', context)
 
 
-def next(request):
-    return HttpResponse("Hello, world. You're here")
+
