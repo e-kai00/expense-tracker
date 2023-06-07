@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,8 +12,8 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
         type="text/css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">     -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">    
+    <link rel="stylesheet" href="{% static 'trackerapp/css/style.css' %}" type="text/css">    
 
     <title>Expense Tracker</title>
 </head>
@@ -60,7 +62,9 @@
         integrity="sha256-DKU1CmJ8kBuEwumaLuh9Tl/6ZB6jzGOBV/5YpNE2BWc=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://kit.fontawesome.com/624b5d3773.js" crossorigin="anonymous"></script>
-    <script src="{% static 'js/script.js' %}"></script>
+
+    <!-- does not work -->    
+    <script src="{% static 'trackerapp/js/script.js' %}"></script> 
 
 </body>
 </html>
