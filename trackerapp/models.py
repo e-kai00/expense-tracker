@@ -103,7 +103,7 @@ class Transactions(models.Model):
         return total
     
 
-    def get_balance(self):
+    def get_balance(self):    # to remove
         balance = 0
         transactions = Transactions.objects.filter(user=self.user)
         for transaction in transactions:

@@ -2,11 +2,14 @@
 
 {% block content %}
 
-{% for transaction in transactions %}
-    <ul>
-        <li>{{ transaction }}</li>
-    </ul>    
-{% endfor %}
+    {% for transaction in transactions %}
+        <ul>
+            <li>{{ transaction }}</li>
+        </ul>    
+    {% endfor %}
+
+  
+    <a class="waves-effect teal accent-4 btn-large">Balance {{ balance }}</a>
 
 
 {% endblock %}
