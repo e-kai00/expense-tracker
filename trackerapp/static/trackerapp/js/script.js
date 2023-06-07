@@ -12,5 +12,5 @@ $(document).ready(function() {
   });
 
 
-  
-  
+// Get current year for the Cpyright
+  $('#copyright').text(new Date().getFullYear());
