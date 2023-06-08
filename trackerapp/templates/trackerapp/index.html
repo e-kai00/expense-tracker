@@ -2,14 +2,22 @@
 
 {% block content %}
 
-    {% for transaction in transactions %}
+<div class="row">
+    <div class="col s12 m6">
+
+        <p>chart placeholder</p>
+        
+    </div>
+    <div class="col s12 m6">
+
+        {% for transaction in transactions %}
         <ul>
             <li>{{ transaction }}</li>
-        </ul>    
-    {% endfor %}
+        </ul>
+        {% endfor %}
 
-  
-    <a class="waves-effect teal accent-4 btn-large">Balance {{ balance }}</a>
-
+        <a class="waves-effect teal accent-4 btn-large">Balance {{ balance }}</a>
+    </div>    
+</div>
 
 {% endblock %}
