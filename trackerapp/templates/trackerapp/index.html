@@ -16,8 +16,24 @@
         </ul>
         {% endfor %}
 
-        <a class="waves-effect teal accent-4 btn-large">Balance {{ balance }}</a>
+        <a class="btn-floating btn-large waves-effect waves-light red modal-trigger" href="#modal1"><i class="material-icons">remove</i></a>
+        <a class="waves-effect teal accent-4 btn-large">Balance {{ balance }}</a>        
+        <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
     </div>    
 </div>
+
+  <!-- Modal Trigger -->
+  <!-- <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a> -->
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>New expense</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Choose Category</a>
+    </div>
+  </div>
 
 {% endblock %}

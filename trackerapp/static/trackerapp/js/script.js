@@ -4,6 +4,7 @@ $(document).ready(function() {
 
     function initMaterialize() {
         $('.sidenav').sidenav();
+        $('.modal').modal();
     }
     
     initMaterialize();
