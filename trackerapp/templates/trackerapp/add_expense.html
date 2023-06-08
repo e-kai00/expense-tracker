@@ -1,0 +1,22 @@
+{% extends "trackerapp/base.html" %}
+
+{% block content %}
+
+<!-- test form -->
+<div class="row">
+    <div class="col s12">
+        <h3>My form</h3>
+        <form method="POST" action="add">
+            {% csrf_token %}
+            {{ form }}
+
+            <div>
+                <p>
+                    <button type="submit">Add Item</button>
+                </p>
+            </div>                        
+        </form>
+    </div>
+</div>
+
+{% endblock %}

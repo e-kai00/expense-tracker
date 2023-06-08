@@ -1,10 +1,9 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from .models import Transactions
+from django.shortcuts import render, redirect
+# from django.forms import modelform_factory
 from django.contrib.auth.models import User
+from .models import Transactions
+from .forms import TransactionForm
 
-
-# Create your views here.
 
 def index(request):
     transactions = Transactions.objects.filter(user=request.user)
@@ -20,6 +19,27 @@ def index(request):
         'balance': balance        
     }
     return render(request, 'trackerapp/index.html', context)
+
+
+def add_expense(request):
+    if request.method == 'POST':
+        form = TransactionForm(request.POST)
+        if form.is_valid():
+            form.save()            
+            return redirect('index')
+    else:
+        form = TransactionForm()
+    context = {
+        'form': form
+    }           
+    return render(request, 'trackerapp/add_expense.html', context)
+
+
+    
+
+
+
+            
 
 
 
