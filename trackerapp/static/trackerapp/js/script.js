@@ -5,6 +5,7 @@ $(document).ready(function() {
     function initMaterialize() {
         $('.sidenav').sidenav();
         $('.modal').modal();
+        $('select').formSelect();
     }
     
     initMaterialize();

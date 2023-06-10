@@ -45,9 +45,19 @@ class AccountCategory(models.Model):
     
 #---------- EXPENSES CATEGORIS
 class ExpenseCategory(models.Model):
+    CATEGORIES = (
+        ('Bills', 'Bills'),
+        ('Clothes', 'Clothes'),
+        ('Entertainment', 'Entertainment'),
+        ('Food', 'Food'),
+        ('Gifts', 'Gifts'),
+        ('Health', 'Health'),        
+        ('Pets', 'Pets'),
+        ('Transport', 'Transport')
+    )
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    category_name = models.CharField(max_length=200, unique=True)
+    category_name = models.CharField(max_length=200, unique=True, choices=CATEGORIES)
 
     def __str__(self):
         return self.category_name
@@ -71,11 +81,11 @@ class Transactions(models.Model):
     TRANSACTION_TYPE_CHOICE = (('Expense', 'Expense'), ('Income', 'Income'))
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    account_category = models.ForeignKey(AccountCategory, on_delete=models.CASCADE)
-    expense_category = models.ForeignKey(ExpenseCategory, on_delete=models.CASCADE)
+    account_category = models.ForeignKey(AccountCategory, on_delete=models.CASCADE, default=None, blank=True, null=True)
+    expense_category = models.ForeignKey(ExpenseCategory, on_delete=models.CASCADE, default=None, blank=True, null=True)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     transaction_type = models.CharField(max_length=7, choices=TRANSACTION_TYPE_CHOICE)
-    transaction_date = models.DateField()
+    transaction_date = models.DateField(auto_now_add=True)
     notes = models.TextField(blank=True)
 
 
