@@ -10,12 +10,25 @@ class TransactionForm(forms.ModelForm):
         # widget=forms.Select(choices=ExpenseCategory.CATEGORIES)
     )
 
-    # expense_category = forms.ChoiceField(required=False, choices=ExpenseCategory.CATEGORIES) 
+     # expense_category = forms.ChoiceField(required=False, choices=ExpenseCategory.CATEGORIES) 
+
+     
+    transaction_type = forms.CharField(
+        widget=forms.HiddenInput, 
+        initial='Expense'
+    )
+
+   
+    class Meta:
+        model = Transactions
+        fields = ['amount', 'expense_category', 'transaction_type', 'notes']    
+
+
+class TransactionIncomeForm(forms.ModelForm):     
 
     class Meta:
         model = Transactions
-        fields = ['amount', 'expense_category', 'notes']    
-
+        fields = ['amount', 'notes'] 
     
 
    

@@ -16,17 +16,17 @@
         </ul>
         {% endfor %}
 
-        <a class="btn-floating btn-large waves-effect waves-light red modal-trigger" href="#modal1"><i
+        <a class="btn-floating btn-large waves-effect waves-light red" href="/add_expense"><i
                 class="material-icons">remove</i></a>
         <a class="waves-effect teal accent-4 btn-large">Balance {{ balance }}</a>
-        <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+        <a class="btn-floating btn-large waves-effect waves-light red" href="/add_income"><i class="material-icons">add</i></a>
     </div>
 </div>
 
-<a href="/add">New Expense</a>
+
 
 <!-- Modal -->
-<div id="modal1" class="modal">
+<!-- <div id="modal1" class="modal">
     <div class="modal-content">
         <h4>New expense</h4>
     
@@ -34,18 +34,6 @@
     </div>
     <div class="modal-footer">
         <a href="#!" class="modal-close waves-effect waves-green btn-flat">Choose Category</a>
-    </div>
-</div>
-
-<!-- test form -->
-<!-- <div class="row">
-    <div class="col s12">
-        <h3>My form</h3>
-        <form method="POST" action="add_expense">
-            {% csrf_token %}
-            {{ form }}
-                        
-        </form>
     </div>
 </div> -->
 
