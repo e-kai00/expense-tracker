@@ -2,20 +2,16 @@
 
 {% block content %}
 
-<!-- test form -->
 <div class="row">
     <div class="col s12">
-        <h3>My form</h3>
+        <h3>New expense</h3>
+
         <form method="POST" action="{% url 'add_expense' %}">
-            {% csrf_token %}
-            
-            {{ form }}
-           
-
-            
+            {% csrf_token %}            
+            {{ form }}            
             <input type="submit" value="Submit">
-
         </form>
+
     </div>
 </div>
 
