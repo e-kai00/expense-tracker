@@ -61,15 +61,7 @@ def add_income(request):
             # get the user account category
             user = request.user            
             account_category = AccountCategory.objects.get(user=user)
-
-            # get the expense category instance
-            # expense_category_option = form.cleaned_data['expense_category']
-            # expense_category = get_object_or_404(
-            #     ExpenseCategory, 
-            #     category_name = expense_category_option, 
-            #     user = user
-            # )
-
+           
             # create transaction with the expense category
             transaction = form.save(commit=False)
             transaction.user = user
@@ -83,6 +75,14 @@ def add_income(request):
         'form': form
     }           
     return render(request, 'trackerapp/add_income.html', context)
+
+
+def transactions(request):
+    transactions = Transactions.objects.filter(user=request.user)
+       
+
+    return render(request, 'trackerapp/transactions.html', {'transactions': transactions})
+
 
 
 
