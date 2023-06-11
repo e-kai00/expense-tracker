@@ -24,11 +24,16 @@ class TransactionForm(forms.ModelForm):
         fields = ['amount', 'expense_category', 'transaction_type', 'notes']    
 
 
-class TransactionIncomeForm(forms.ModelForm):     
+class TransactionIncomeForm(forms.ModelForm):
+
+    transaction_type = forms.CharField(
+        widget=forms.HiddenInput, 
+        initial='Income'
+    )
 
     class Meta:
         model = Transactions
-        fields = ['amount', 'notes'] 
+        fields = ['amount', 'transaction_type', 'notes'] 
     
 
    

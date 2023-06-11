@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 # from django.forms import modelform_factory
 from django.contrib.auth.models import User
 from .models import Transactions, ExpenseCategory, AccountCategory
-from .forms import TransactionForm
+from .forms import TransactionForm, TransactionIncomeForm
 
 
 def index(request):
@@ -56,29 +56,29 @@ def add_expense(request):
 
 def add_income(request):
     if request.method == 'POST':
-        form = TransactionForm(request.POST)
+        form = TransactionIncomeForm(request.POST)
         if form.is_valid():
             # get the user account category
             user = request.user            
             account_category = AccountCategory.objects.get(user=user)
 
             # get the expense category instance
-            expense_category_option = form.cleaned_data['expense_category']
-            expense_category = get_object_or_404(
-                ExpenseCategory, 
-                category_name = expense_category_option, 
-                user = user
-            )
+            # expense_category_option = form.cleaned_data['expense_category']
+            # expense_category = get_object_or_404(
+            #     ExpenseCategory, 
+            #     category_name = expense_category_option, 
+            #     user = user
+            # )
 
             # create transaction with the expense category
             transaction = form.save(commit=False)
             transaction.user = user
             transaction.account_category = account_category
-            transaction.expense_category = expense_category
+            # transaction.expense_category = expense_category
             form.save()       
             return redirect('index')
     else:
-        form = TransactionForm()
+        form = TransactionIncomeForm()
     context = {
         'form': form
     }           

@@ -9,8 +9,7 @@
         <form method="POST" action="{% url 'add_income' %}">
             {% csrf_token %}
             
-            {{ form }}
-           
+            {{ form }}           
 
             
             <input type="submit" value="Submit">
