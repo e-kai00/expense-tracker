@@ -45,16 +45,10 @@ class AccountCategory(models.Model):
     
 #---------- EXPENSES CATEGORIS
 class ExpenseCategory(models.Model):
-    CATEGORIES = (
-        ('Bills', 'Bills'),
-        ('Clothes', 'Clothes'),
-        ('Entertainment', 'Entertainment'),
-        ('Food', 'Food'),
-        ('Gifts', 'Gifts'),
-        ('Health', 'Health'),        
-        ('Pets', 'Pets'),
-        ('Transport', 'Transport')
-    )
+    CATEGORIES = [                
+        ('Clothes', 'Clothes'),        
+        ('Food', 'Food')           
+    ]
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     category_name = models.CharField(max_length=200, unique=True, choices=CATEGORIES)

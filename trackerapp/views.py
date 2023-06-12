@@ -3,12 +3,13 @@ from django.db.models import Q
 # from django.forms import modelform_factory
 from django.contrib.auth.models import User
 from .models import Transactions, ExpenseCategory, AccountCategory
-from .forms import TransactionForm, TransactionIncomeForm
+from .forms import TransactionForm, TransactionIncomeForm, AddCategoryForm
 import datetime
 
 
 def index(request):
 
+    # get the current month and year
     now = datetime.datetime.now()
     year = now.year
     month = now.month
@@ -18,7 +19,7 @@ def index(request):
         transaction_date__year=year,
         transaction_date__month=month
     )
-    
+
     balance = 0   
     for transaction in transactions:
         if transaction.transaction_type == 'Income':
@@ -34,11 +35,11 @@ def index(request):
 
 
 def add_expense(request):
-    # form = TransactionForm(initial={'transaction_type': 'Expense'})
-    
+        
     if request.method == 'POST':
         form = TransactionForm(request.POST)
         if form.is_valid():
+
             # get the user account category
             user = request.user            
             account_category = AccountCategory.objects.get(user=user)
@@ -67,9 +68,11 @@ def add_expense(request):
 
 
 def add_income(request):
+
     if request.method == 'POST':
         form = TransactionIncomeForm(request.POST)
         if form.is_valid():
+
             # get the user account category
             user = request.user            
             account_category = AccountCategory.objects.get(user=user)
@@ -115,9 +118,30 @@ def transactions(request):
         transactions = transactions.filter(
             Q(transaction_date__year=year) & Q(transaction_date__month=month)
         )
-            
-
+      
     return render(request, 'trackerapp/transactions.html', {'transactions': transactions, 'month_choices': month_choices})
+
+
+def categories(request):
+    categories = ExpenseCategory.objects.all()
+    return render(request, 'trackerapp/categories.html', {'categories': categories})
+
+
+def categories_add(request):
+
+    if request.method == 'POST':
+        form = AddCategoryForm(request.POST)
+        if form.is_valid():
+            # retrieve input data
+            custom_category_name = form.cleaned_data['custom_category_name']
+            category = ExpenseCategory(user=request.user, category_name = custom_category_name)
+            category.save()            
+            return redirect('categories')
+    else:
+        form = AddCategoryForm()
+
+    return render(request, 'trackerapp/categories_add.html', {'form': form})
+
 
 
 
