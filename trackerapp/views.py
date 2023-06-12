@@ -8,7 +8,17 @@ import datetime
 
 
 def index(request):
-    transactions = Transactions.objects.filter(user=request.user)
+
+    now = datetime.datetime.now()
+    year = now.year
+    month = now.month
+
+    transactions = Transactions.objects.filter(
+        user=request.user,
+        transaction_date__year=year,
+        transaction_date__month=month
+    )
+    
     balance = 0   
     for transaction in transactions:
         if transaction.transaction_type == 'Income':
