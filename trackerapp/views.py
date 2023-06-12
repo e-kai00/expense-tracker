@@ -3,12 +3,11 @@ from django.db.models import Q
 # from django.forms import modelform_factory
 from django.contrib.auth.models import User
 from .models import Transactions, ExpenseCategory, AccountCategory
-from .forms import TransactionForm, TransactionIncomeForm, AddCategoryForm
+from .forms import TransactionForm, TransactionIncomeForm, AddCategoryForm, EditCategoryForm
 import datetime
 
 
 def index(request):
-
     # get the current month and year
     now = datetime.datetime.now()
     year = now.year
@@ -34,8 +33,7 @@ def index(request):
     return render(request, 'trackerapp/index.html', context)
 
 
-def add_expense(request):
-        
+def add_expense(request):        
     if request.method == 'POST':
         form = TransactionForm(request.POST)
         if form.is_valid():
@@ -68,7 +66,6 @@ def add_expense(request):
 
 
 def add_income(request):
-
     if request.method == 'POST':
         form = TransactionIncomeForm(request.POST)
         if form.is_valid():
@@ -92,8 +89,7 @@ def add_income(request):
     return render(request, 'trackerapp/add_income.html', context)
 
 
-def transactions(request):
-    
+def transactions(request):    
     # filter by month
     year = datetime.datetime.now().year
     month_choices = [
@@ -128,7 +124,6 @@ def categories(request):
 
 
 def categories_add(request):
-
     if request.method == 'POST':
         form = AddCategoryForm(request.POST)
         if form.is_valid():
@@ -142,6 +137,25 @@ def categories_add(request):
 
     return render(request, 'trackerapp/categories_add.html', {'form': form})
 
+# does not work, needs fixing
+def categories_edit(request, category_id):
+    category = get_object_or_404(ExpenseCategory, id=category_id, user=request.user)
+
+    if request.method == 'POST':
+        form = EditCategoryForm(request.POST, instance=category)
+        if form.is_valid():
+            form.save()            
+            return redirect('categories')
+    else:
+        form = EditCategoryForm(instance=category)
+
+    return render(request, 'trackerapp/categories_edit.html', {'form': form})
+
+
+def categories_delete(request, category_id):
+    category = get_object_or_404(ExpenseCategory, id=category_id, user=request.user)
+    category.delete()
+    return redirect('categories')
 
 
 

@@ -15,18 +15,31 @@
 <div class="row">
     {% for category in categories %}
     <div class="col s12 m6 l3">
-      <div class="card teal accent-4 center-align">
-        <div class="card-content white-text">
-          <span class="card-title">{{ category.category_name }}</span>          
+        <div class="card teal accent-4 center-align">
+            <div class="card-content white-text">
+                <span class="card-title">{{ category.category_name }}</span>
+            </div>
+            <div class="card-action white">
+                <a href="{% url 'categories_edit' category_id=category.id %}"><i class="material-icons"
+                        title="Edit">edit</i></a>
+                <!-- <a class="modal-trigger" href="#modal1"><i class="material-icons" title="Delete">delete</i></a> -->
+                <a href="{% url 'categories_delete' category_id=category.id %}"><i class="material-icons" title="Delete">delete</i></a>                    
+            </div>
         </div>
-        <div class="card-action white">            
-            <a href="#"><i class="material-icons" title="Edit">edit</i></a>
-            <a href="#"><i class="material-icons" title="Delete">delete</i></a>
-          <!-- <a href="#" class="btn green accent-4">Edit</a>
-          <a href="#" class="btn red">Delete</a> -->
-        </div>
-      </div>
     </div>
     {% endfor %}
-  </div>
+
+    
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4>Modal Header</h4>
+            <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="modal-close waves-effect waves-green btn-flat">Yes</a>
+            <a href="#" class="modal-close waves-effect waves-green btn-flat">No</a>
+        </div>
+    </div>
+</div>
 {% endblock %}
