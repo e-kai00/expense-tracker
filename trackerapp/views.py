@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.db.models import Q
 # from django.forms import modelform_factory
 from django.contrib.auth.models import User
 from .models import Transactions, ExpenseCategory, AccountCategory
 from .forms import TransactionForm, TransactionIncomeForm
+import datetime
 
 
 def index(request):
@@ -78,10 +80,34 @@ def add_income(request):
 
 
 def transactions(request):
-    transactions = Transactions.objects.filter(user=request.user)
-       
+    
+    # filter by month
+    year = datetime.datetime.now().year
+    month_choices = [
+        (1, 'January'), 
+        (2, 'February'), 
+        (3, 'March'), 
+        (4, 'April'),
+        (5, 'May'), 
+        (6, 'June'), 
+        (7, 'July'), 
+        (8, 'August'),
+        (9, 'September'), 
+        (10, 'October'), 
+        (11, 'November'), 
+        (12, 'December')
+    ]
 
-    return render(request, 'trackerapp/transactions.html', {'transactions': transactions})
+    transactions = Transactions.objects.all()
+
+    if request.method == 'POST':
+        month = int(request.POST.get('month'))
+        transactions = transactions.filter(
+            Q(transaction_date__year=year) & Q(transaction_date__month=month)
+        )
+            
+
+    return render(request, 'trackerapp/transactions.html', {'transactions': transactions, 'month_choices': month_choices})
 
 
 

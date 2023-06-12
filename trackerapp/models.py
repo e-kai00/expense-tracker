@@ -95,26 +95,7 @@ class Transactions(models.Model):
             return f'{self.expense_category} - {self.transaction_type} - {self.amount}'
     
 
-    def transactions_list(self):
-        return Transactions.objects.filter(user=self.user)
-    
-
-    def get_total_expenses(self):
-        total = 0
-        expenses_list = Transactions.objects.filter(user=self.user, transaction_type='Expense')
-        for expense in expenses_list:
-            total += expense.amount
-        return total
-    
-
-    def get_total_income(self):
-        total = 0
-        income_list = Transactions.objects.filter(user=self.user, transaction_type='Income')
-        for income in income_list:
-            total += income.amount
-        return total
-    
-
+  
     def get_balance(self):    # to remove
         balance = 0
         transactions = Transactions.objects.filter(user=self.user)
@@ -125,14 +106,6 @@ class Transactions(models.Model):
                 balance -= transaction.amount
         return balance
     
-
-    def filter_by_month(self, month):
-        current_year = date.today().year
-        return Transactions.objects.filter(
-            user=self.user, 
-            transaction_date__month=month, 
-            transaction_date__year=current_year
-        )
 
     
 

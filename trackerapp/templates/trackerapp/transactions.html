@@ -8,12 +8,30 @@
         <p>chart placeholder</p>
 
     </div>
-    <div class="col s12 m6">     
-        
-        <p>Total Expenses: {{ transactions.get_total_expenses }}</p>    
-        
-        
+
+    <div class="col s12 m6">
+        <!-- iterate  -->
+        <p>Total Expenses:</p>
+        <ul>
+            {% for expense in transactions %}
+            <li>{{ expense }}</li>
+            {% endfor %}
+        </ul>
     </div>
+
+    <div class="input-field col s12">
+        <form method="post">
+            {% csrf_token %}
+            <label for="month">Choose a month:</label>
+            <select id="month" name="month">
+                {% for month_number, month_name in month_choices %}
+                <option value="{{ month_number }}">{{ month_name }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit">Filter</button>
+    </div>
+    </form>
 </div>
+
 
 {% endblock %}
