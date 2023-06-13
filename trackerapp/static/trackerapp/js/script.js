@@ -4,18 +4,18 @@ $(document).ready(function() {
 
     function initMaterialize() {
         $('.sidenav').sidenav();
-        $('.modal').modal();
+        $('.modal').modal();      
         $('select').formSelect();
     }
 
         
     initMaterialize();
 
-
+  
   // Get current year for the Cpyright
   $('#copyright').text(new Date().getFullYear());
     
 
-  });
+});
 
 
