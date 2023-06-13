@@ -42,7 +42,8 @@ class EditCategoryForm(forms.ModelForm):
         model = ExpenseCategory
         fields = ['category_name']
         widgets = {
-            'category_name': forms.TextInput(attrs={'value': 'instance.category_name'}),
+            # 'category_name': forms.TextInput(attrs={'value': 'instance.category_name'}),
+            'category_name': forms.TextInput(attrs={'placeholder': 'Category Name'}),
         }
     
 

@@ -148,7 +148,6 @@ def categories_edit(request, category_id):
             return redirect('categories')
     else:
         form = EditCategoryForm(instance=category)
-
     return render(request, 'trackerapp/categories_edit.html', {'form': form})
 
 
@@ -158,7 +157,9 @@ def categories_delete(request, category_id):
     return redirect('categories')
 
 
-
+def accounts(request):
+    accounts = AccountCategory.objects.all()
+    return render(request, 'trackerapp/accounts.html', {'accounts': accounts})
 
     
 
