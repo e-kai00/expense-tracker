@@ -29,6 +29,18 @@
                     <li><a href="{% url 'categories' %}"><i class="material-icons"title='Categories'>style</i></a></li>
                     <li><a href="{% url 'accounts' %}"><i class="material-icons" title="Accounts">account_balance_wallet</i></a></li>
                     <li><a href="#"><i class="material-icons" title="Profile">person</i></a></li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_signup'%}">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+                    </li>
+                    {% endif %}
                 </ul>
             </div>
         </nav>

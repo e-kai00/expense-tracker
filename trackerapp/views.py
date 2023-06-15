@@ -12,18 +12,24 @@ def index(request):
     year = now.year
     month = now.month
 
-    transactions = Transactions.objects.filter(
-        user=request.user,
-        transaction_date__year=year,
-        transaction_date__month=month
+    if request.user.is_authenticated: 
+        transactions = Transactions.objects.filter(
+            user=request.user,
+            transaction_date__year=year,
+            transaction_date__month=month
     )
 
-    balance = 0   
-    for transaction in transactions:
-        if transaction.transaction_type == 'Income':
-            balance += transaction.amount
-        else:
-            balance -= transaction.amount
+        balance = 0   
+        for transaction in transactions:
+            if transaction.transaction_type == 'Income':
+                balance += transaction.amount
+            else:
+                balance -= transaction.amount
+
+    else:
+        transactions = None
+        balance = None
+
         
     context = {
         'transactions': transactions,
