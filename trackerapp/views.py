@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Q
-# from django.forms import modelform_factory
 from django.contrib.auth.models import User
 from .models import Transactions, ExpenseCategory, AccountCategory
 from .forms import TransactionForm, TransactionIncomeForm, AddCategoryForm, EditCategoryForm

@@ -1,11 +1,12 @@
 {% extends "trackerapp/base.html" %}
+{% load materializecss %}
 
 {% block content %}
 
 <div class="row card-panel grey lighten-5">
     <form class="col s12" method="POST" action="{% url 'categories_add' %}">
         {% csrf_token %} 
-        {{ form.custom_category_name }}
+        {{ form.custom_category_name|materializecss:'m6' }}  <!-- style it later -->
      
         <div class="row">
             <div class="col s12 center-align">
