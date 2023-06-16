@@ -43,11 +43,11 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'trackerapp',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'materializecssform',
-    'trackerapp',
+    'materializecssform',    
 ]
 
 SITE_ID = 1
