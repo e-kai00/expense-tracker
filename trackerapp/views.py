@@ -79,11 +79,10 @@ def add_income(request):
             user = request.user            
             account_category = AccountCategory.objects.get(user=user)
            
-            # create transaction with the expense category
+            # create transaction with the acount category
             transaction = form.save(commit=False)
             transaction.user = user
-            transaction.account_category = account_category
-            # transaction.expense_category = expense_category
+            transaction.account_category = account_category            
             form.save()       
             return redirect('index')
     else:
@@ -94,7 +93,7 @@ def add_income(request):
     return render(request, 'trackerapp/add_income.html', context)
 
 
-def transactions(request):    
+def transactions(request):                      # check all views below for user authentication
     # filter by month
     year = datetime.datetime.now().year
     month_choices = [
@@ -161,10 +160,31 @@ def categories_delete(request, category_id):
     category.delete()
     return redirect('categories')
 
-
+# -------------------postponed
 def accounts(request):
     accounts = AccountCategory.objects.all()
     return render(request, 'trackerapp/accounts.html', {'accounts': accounts})
+
+
+# Charts.js
+
+def expenses_by_category(request):
+    expense_categories = ExpenseCategory.objects.filter(user=request.user)
+
+    category_label = [category.category_name for category in expense_categories]
+
+    total_expense = []
+    for category in expense_categories:
+        transactions = Transactions.objects.filter(user=request.user, expense_categories=category)
+        category_total = sum(transaction.amount for transaction in transactions)
+        total_expense.append(category_total)
+
+    return render(request, 'trackerapp/index.html', {'category_label': category_label, 'total_expense': total_expense})
+
+        
+
+
+
 
     
 
