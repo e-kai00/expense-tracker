@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Q
 from django.contrib.auth.models import User
+from django.http import JsonResponse
 from .models import Transactions, ExpenseCategory, AccountCategory
 from .forms import TransactionForm, TransactionIncomeForm, AddCategoryForm, EditCategoryForm
 import datetime
@@ -177,12 +178,29 @@ def expenses_by_category(request):
     for category in expense_categories:
         transactions = Transactions.objects.filter(user=request.user, expense_categories=category)
         category_total = sum(transaction.amount for transaction in transactions)
-        total_expense.append(category_total)
+        total_expense.append(category_total)    
 
     return render(request, 'trackerapp/index.html', {'category_label': category_label, 'total_expense': total_expense})
 
         
 
+def expenses_by_category1(request):
+    expense_categories = ExpenseCategory.objects.filter(user=request.user)
+
+    category_label = [category.category_name for category in expense_categories]
+
+    total_expense = []
+    for category in expense_categories:
+        transactions = Transactions.objects.filter(user=request.user, expense_category=category)
+        category_total = sum(transaction.amount for transaction in transactions)
+        total_expense.append(category_total)    
+
+    context = {
+        'category_label': category_label,
+        'total_expense': total_expense,
+    }
+
+    return JsonResponse(context)
 
 
 

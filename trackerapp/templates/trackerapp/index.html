@@ -1,12 +1,13 @@
 {% extends "trackerapp/base.html" %}
 
+
 {% block content %}
 
 <div class="row">
     <div class="col s12 m6">
 
-        <canvas id="myChart" width="800" height="400"></canvas>
-
+        <canvas id="myChart" width="400" height="400"></canvas>
+        
     </div>
     <div class="col s12 m6">
 
@@ -21,18 +22,38 @@
         <a class="btn-floating btn-large waves-effect waves-light red" href="/add_income"><i class="material-icons">add</i></a>
     </div>    
 </div>
-
-
-<!-- Modal -->
-<!-- <div id="modal1" class="modal">
-    <div class="modal-content">
-        <h4>New expense</h4>
-    
-
-    </div>
-    <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Choose Category</a>
-    </div>
-</div> -->
-
 {% endblock %}
+
+{% block scripts %}
+<script>
+    var endpoint = '{% url "api-data" %}'
+    var defaultData = []
+    var labels = []
+
+    $.ajax({
+        method: "GET",
+        url: endpoint,
+        success: function(context){
+            labels = context.category_label
+            defaultData = context.total_expense
+            var ctx = document.getElementById('myChart');
+            var myChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: '$',
+                    data: defaultData,                    
+                }]
+            }
+            })
+        }, 
+        error: function(error_context){
+            console.log("error")
+            console.log(error_context)
+        },
+    })
+
+</script>
+{% endblock %}
+
