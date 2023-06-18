@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.safestring import mark_safe
 from datetime import date
 
 
@@ -84,9 +85,10 @@ class Transactions(models.Model):
     
     def __str__(self):
         if self.transaction_type == 'Income':
-            return f'my income - {self.transaction_type} - {self.amount}'
+            income_icon = '<i class="fa-solid fa-sack-dollar fa-xl"></i>'
+            return mark_safe(f'${self.amount} - {income_icon}')
         else:
-            return f'{self.expense_category} - {self.transaction_type} - {self.amount}'
+            return f'${self.amount} - {self.expense_category} - {self.transaction_type}'
     
 
   

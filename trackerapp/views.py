@@ -176,21 +176,6 @@ def expenses_by_category(request):
 
     total_expense = []
     for category in expense_categories:
-        transactions = Transactions.objects.filter(user=request.user, expense_categories=category)
-        category_total = sum(transaction.amount for transaction in transactions)
-        total_expense.append(category_total)    
-
-    return render(request, 'trackerapp/index.html', {'category_label': category_label, 'total_expense': total_expense})
-
-        
-
-def expenses_by_category1(request):
-    expense_categories = ExpenseCategory.objects.filter(user=request.user)
-
-    category_label = [category.category_name for category in expense_categories]
-
-    total_expense = []
-    for category in expense_categories:
         transactions = Transactions.objects.filter(user=request.user, expense_category=category)
         category_total = sum(transaction.amount for transaction in transactions)
         total_expense.append(category_total)    
