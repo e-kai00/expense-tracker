@@ -9,41 +9,13 @@ class AccountCategory(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     account_name = models.CharField(max_length=200, unique=True, default='Cash')
-    balance = models.DecimalField(max_digits=10, decimal_places=2)  
-
+    balance = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
-        return self.account_name
-    
+        return self.account_name  
 
-    def total_balance(self):
-        total_balance = Transactions.objects.filter(user=self.user)
-        return total_balance.get_balance()
-    
+       
 
-    def update_balance(self, amount, operation):
-        current_balance = self.total_balance()
-        if operation == 'add':
-            current_balance += amount
-        else:
-            current_balance -= amount        
-        self.balance = current_balance
-        self.save()
-
-
-    def is_sufficient_balance(self, amount):
-        return self.total_balance() >= amount
-    
-
-    def trasfer_funds(self, target_account, amount):
-        if self.is_sufficient_balance(amount):
-            self.update_balance(amount, 'subtract')
-            target_account.update_balance(amount, 'add')
-            return True
-        else:
-            False
-    
-    
 #---------- EXPENSES CATEGORIS
 class ExpenseCategory(models.Model):
     CATEGORIES = [                
@@ -56,15 +28,8 @@ class ExpenseCategory(models.Model):
 
     def __str__(self):
         return self.category_name
+        
     
-    # total expenses by category
-    def get_total_expenses(self):
-        total = 0
-        expenses = Transactions.objects.filter(expense_categoty=self)
-        for expense in expenses:
-            total += expense.amount
-        return total
-
     # list of transactions by category
     def show_category_expenses(self):
         expenses_list = Transactions.objects.filter(expense_category=self)
@@ -92,15 +57,7 @@ class Transactions(models.Model):
     
 
   
-    def get_balance(self):    # to remove
-        balance = 0
-        transactions = Transactions.objects.filter(user=self.user)
-        for transaction in transactions:
-            if transaction.transaction_type == 'Income':
-                balance += transaction.amount
-            else:
-                balance -= transaction.amount
-        return balance
+    
     
 
     
