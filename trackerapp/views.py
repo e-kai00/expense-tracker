@@ -20,13 +20,17 @@ def index(request):
             transaction_date__year=year,
             transaction_date__month=month
     )
-        
-        total_by_category = transactions.filter(transaction_type='Expense').values('expense_category__category_name').annotate(total_expenses=Sum('amount'))
+        # group expenses by categories, accumulate income
+        total_by_category = transactions.filter(
+            transaction_type='Expense'
+            ).values('expense_category__category_name'
+            ).annotate(total_expenses=Sum('amount'))
 
         total_income = transactions.filter(
             transaction_type='Income'
-        ).aggregate(total=Sum('amount'))['total'] or 0
-
+            ).aggregate(total=Sum('amount'))['total'] or 0
+        
+        # tatal balance for month
         balance = 0   
         for transaction in transactions:
             if transaction.transaction_type == 'Income':
@@ -76,10 +80,7 @@ def add_expense(request):
             return redirect('index')
     else:
         form = TransactionForm()
-
-    # context = {
-    #     'form': form
-    # }           
+             
     return render(request, 'trackerapp/add_expense.html', {'form': form})
 
 
@@ -100,10 +101,7 @@ def add_income(request):
             return redirect('index')
     else:
         form = TransactionIncomeForm()
-
-    # context = {
-    #     'form': form
-    # }           
+            
     return render(request, 'trackerapp/add_income.html', {'form': form})
 
 

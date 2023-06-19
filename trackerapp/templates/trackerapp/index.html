@@ -11,7 +11,7 @@
     <div class="col s12 m6">    
         
         <p><i class="fa-solid fa-sack-dollar"></i> Income: ${{ total_income }}</p>
-        
+
         {% for total in total_by_category %}
         <p><i class="fa-solid fa-tag fa-rotate-90"></i> {{ total.expense_category__category_name }}: ${{ total.total_expenses }}</p>
         {% endfor %}       
@@ -42,17 +42,26 @@
                 labels: labels,
                 datasets: [{
                     label: '$',
-                    data: defaultData,                    
+                    data: defaultData,
                 }]
-            }
-            })
-        }, 
-        error: function(error_context){
-            console.log("error")
-            console.log(error_context)
-        },
-    })
-
+            },
+            options: {
+                plugins: {
+                  emptyDoughnut: {
+                    color: 'rgba(38, 38, 38, 0.5)',
+                    width: 1,
+                    radiusDecrease: 20,
+                    backgroundColor: 'rgba(38, 38, 38, 0.5)'
+                    
+                  },
+                }
+  },
+  plugins: [plugin]
+            });
+        }        
+    });                    
+           
 </script>
 {% endblock %}
+
 
