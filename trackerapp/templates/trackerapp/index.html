@@ -8,13 +8,13 @@
         <canvas id="myChart" width="400" height="400"></canvas>
         
     </div>
-    <div class="col s12 m6">
-
-        {% for transaction in transactions %}
-        <ul>
-            <li>{{ transaction }}</li>
-        </ul>
-        {% endfor %}
+    <div class="col s12 m6">    
+        
+        <p><i class="fa-solid fa-sack-dollar"></i> Income: ${{ total_income }}</p>
+        
+        {% for total in total_by_category %}
+        <p><i class="fa-solid fa-tag fa-rotate-90"></i> {{ total.expense_category__category_name }}: ${{ total.total_expenses }}</p>
+        {% endfor %}       
 
         <a class="btn-floating btn-large waves-effect waves-light red" href="/add_expense"><i class="material-icons">remove</i></a>
         <a class="waves-effect teal accent-4 btn-large" href="/transactions">Balance {{ balance }}</a>

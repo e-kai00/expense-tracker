@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.db.models import Q
+from django.db.models import Q, Sum
 from django.contrib.auth.models import User
 from django.http import JsonResponse
 from .models import Transactions, ExpenseCategory, AccountCategory
@@ -7,6 +7,7 @@ from .forms import TransactionForm, TransactionIncomeForm, AddCategoryForm, Edit
 import datetime
 
 
+# --------------MAIN PAGE
 def index(request):
     # get the current month and year
     now = datetime.datetime.now()
@@ -19,6 +20,12 @@ def index(request):
             transaction_date__year=year,
             transaction_date__month=month
     )
+        
+        total_by_category = transactions.filter(transaction_type='Expense').values('expense_category__category_name').annotate(total_expenses=Sum('amount'))
+
+        total_income = transactions.filter(
+            transaction_type='Income'
+        ).aggregate(total=Sum('amount'))['total'] or 0
 
         balance = 0   
         for transaction in transactions:
@@ -29,11 +36,15 @@ def index(request):
 
     else:
         transactions = None
+        total_by_category = None
+        total_income = None
         balance = None
 
         
     context = {
         'transactions': transactions,
+        'total_by_category': total_by_category,
+        'total_income': total_income,
         'balance': balance        
     }
     return render(request, 'trackerapp/index.html', context)
@@ -65,10 +76,11 @@ def add_expense(request):
             return redirect('index')
     else:
         form = TransactionForm()
-    context = {
-        'form': form
-    }           
-    return render(request, 'trackerapp/add_expense.html', context)
+
+    # context = {
+    #     'form': form
+    # }           
+    return render(request, 'trackerapp/add_expense.html', {'form': form})
 
 
 def add_income(request):
@@ -88,12 +100,14 @@ def add_income(request):
             return redirect('index')
     else:
         form = TransactionIncomeForm()
-    context = {
-        'form': form
-    }           
-    return render(request, 'trackerapp/add_income.html', context)
+
+    # context = {
+    #     'form': form
+    # }           
+    return render(request, 'trackerapp/add_income.html', {'form': form})
 
 
+# --------------FILTERS
 def transactions(request):                      # check all views below for user authentication
     # filter by month
     year = datetime.datetime.now().year
@@ -145,7 +159,7 @@ def categories_add(request):
 
     return render(request, 'trackerapp/categories_add.html', {'form': form})
 
-# does not work, needs fixing
+
 def categories_edit(request, category_id):
     category = get_object_or_404(ExpenseCategory, id=category_id, user=request.user)
 
@@ -164,14 +178,14 @@ def categories_delete(request, category_id):
     category.delete()
     return redirect('categories')
 
-# -------------------postponed
+
+# --------------ACCOUNT CATEGORIES -------postponed
 def accounts(request):
     accounts = AccountCategory.objects.all()
     return render(request, 'trackerapp/accounts.html', {'accounts': accounts})
 
 
-# Charts.js
-
+# --------------Chart.js
 def expenses_by_category(request):
     expense_categories = ExpenseCategory.objects.filter(user=request.user)
 
