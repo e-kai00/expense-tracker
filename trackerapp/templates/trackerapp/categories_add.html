@@ -6,7 +6,12 @@
 <div class="row card-panel grey lighten-5">
     <form class="col s12" method="POST" action="{% url 'categories_add' %}">
         {% csrf_token %} 
-        {{ form.custom_category_name|materializecss:'m6' }}  <!-- style it later -->
+
+        <!-- hidden form field -->
+    <input type="hidden" id="previous_page" name="previous_page" 
+    value="/previous/page/url">
+
+        {{ form.category_name|materializecss:'m6' }}  <!-- style it later -->
      
         <div class="row">
             <div class="col s12 center-align">
@@ -18,4 +23,9 @@
     </form>
 </div>
 
+<script>
+    prev = document.getElementById("previous_page");
+    prev.value = document.referrer;
+</script>
 {% endblock %}
+

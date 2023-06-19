@@ -11,7 +11,7 @@ class TransactionForm(forms.ModelForm):
     transaction_type = forms.CharField(
         widget=forms.HiddenInput, 
         initial='Expense'
-    )
+    ) 
    
     class Meta:
         model = Transactions
@@ -30,11 +30,11 @@ class TransactionIncomeForm(forms.ModelForm):
 
 
 class AddCategoryForm(forms.ModelForm):
-    custom_category_name = forms.CharField(max_length=200, label='Custom Category Name')
+    # custom_category_name = forms.CharField(max_length=200, label='Custom Category Name')
 
     class Meta:
         model = ExpenseCategory
-        fields = ['custom_category_name']
+        fields = ['category_name']
 
 # does not work, needs fixing
 class EditCategoryForm(forms.ModelForm):

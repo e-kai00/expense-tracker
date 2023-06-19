@@ -123,6 +123,7 @@ def transactions(request):                      # check all views below for user
     return render(request, 'trackerapp/transactions.html', {'transactions': transactions, 'month_choices': month_choices})
 
 
+# --------------EXPENSE CATEGORIES
 def categories(request):
     categories = ExpenseCategory.objects.all()
     return render(request, 'trackerapp/categories.html', {'categories': categories})
@@ -132,11 +133,13 @@ def categories_add(request):
     if request.method == 'POST':
         form = AddCategoryForm(request.POST)
         if form.is_valid():
-            # retrieve input data
-            custom_category_name = form.cleaned_data['custom_category_name']
-            category = ExpenseCategory(user=request.user, category_name = custom_category_name)
-            category.save()            
-            return redirect('categories')
+            category = form.save(commit=False)
+            category.user = request.user
+            category.save()
+
+            previous_page = request.POST.get('previous_page')
+
+            return redirect(previous_page)
     else:
         form = AddCategoryForm()
 

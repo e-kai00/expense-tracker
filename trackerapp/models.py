@@ -17,14 +17,10 @@ class AccountCategory(models.Model):
        
 
 #---------- EXPENSES CATEGORIS
-class ExpenseCategory(models.Model):
-    CATEGORIES = [                
-        ('Clothes', 'Clothes'),        
-        ('Food', 'Food')           
-    ]
+class ExpenseCategory(models.Model):    
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    category_name = models.CharField(max_length=200, unique=True, choices=CATEGORIES)
+    category_name = models.CharField(max_length=200, unique=True)
 
     def __str__(self):
         return self.category_name
