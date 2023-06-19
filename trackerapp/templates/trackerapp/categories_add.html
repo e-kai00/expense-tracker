@@ -7,9 +7,8 @@
     <form class="col s12" method="POST" action="{% url 'categories_add' %}">
         {% csrf_token %} 
 
-        <!-- hidden form field -->
-    <input type="hidden" id="previous_page" name="previous_page" 
-    value="/previous/page/url">
+    <!-- hidden form field -->
+    <input type="hidden" id="previous_page" name="previous_page">
 
         {{ form.category_name|materializecss:'m6' }}  <!-- style it later -->
      
@@ -23,6 +22,7 @@
     </form>
 </div>
 
+<!-- set the value of 'previous_page' -->
 <script>
     prev = document.getElementById("previous_page");
     prev.value = document.referrer;
