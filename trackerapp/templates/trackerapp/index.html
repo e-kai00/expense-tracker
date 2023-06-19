@@ -1,25 +1,26 @@
 {% extends "trackerapp/base.html" %}
 
 {% block content %}
+<div class="row holder-container">
 
-<div class="row">
+    <!-- expenses chart -->
     <div class="col s12 m6">
-
         <canvas id="myChart" width="400" height="400"></canvas>
-        
     </div>
-    <div class="col s12 m6">    
-        
+
+    <div class="col s12 m6">
         <p><i class="fa-solid fa-sack-dollar"></i> Income: ${{ total_income }}</p>
 
         {% for total in total_by_category %}
         <p><i class="fa-solid fa-tag fa-rotate-90"></i> {{ total.expense_category__category_name }}: ${{ total.total_expenses }}</p>
-        {% endfor %}       
+        {% endfor %}
+        <div class="holder">
+            <a class="btn-floating btn-large waves-effect waves-light red lighten-1" href="/add_expense"><i class="material-icons">remove</i></a>
+            <a class=" btn-large custom-btn" href="/transactions">Balance ${{ balance }}</a>
+            <a class="btn-floating btn-large waves-effect waves-light teal accent-4" href="/add_income"><i class="material-icons">add</i></a>
+        </div>
+    </div>
 
-        <a class="btn-floating btn-large waves-effect waves-light red" href="/add_expense"><i class="material-icons">remove</i></a>
-        <a class="waves-effect teal accent-4 btn-large" href="/transactions">Balance {{ balance }}</a>
-        <a class="btn-floating btn-large waves-effect waves-light red" href="/add_income"><i class="material-icons">add</i></a>
-    </div>    
 </div>
 {% endblock %}
 
@@ -32,36 +33,34 @@
     $.ajax({
         method: "GET",
         url: endpoint,
-        success: function(context){
+        success: function (context) {
             labels = context.category_label
             defaultData = context.total_expense
             var ctx = document.getElementById('myChart');
             var myChart = new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: '$',
-                    data: defaultData,
-                }]
-            },
-            options: {
-                plugins: {
-                  emptyDoughnut: {
-                    color: 'rgba(38, 38, 38, 0.5)',
-                    width: 1,
-                    radiusDecrease: 20,
-                    backgroundColor: 'rgba(38, 38, 38, 0.5)'
-                    
-                  },
-                }
-  },
-  plugins: [plugin]
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: '$',
+                        data: defaultData,
+                    }]
+                },
+                options: {
+                    plugins: {
+                        emptyDoughnut: {
+                            color: 'rgba(0, 191, 165, 0.2)',
+                            width: 20,
+                            radiusDecrease: 20,
+                            backgroundColor: 'rgba(38, 38, 38, 0.5)'
+
+                        },
+                    }
+                },
+                plugins: [plugin]
             });
-        }        
-    });                    
-           
+        }
+    });
+
 </script>
 {% endblock %}
-
-

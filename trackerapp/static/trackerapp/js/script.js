@@ -18,6 +18,8 @@ $(document).ready(function() {
 
 });
 
+
+// Chart.js plagin
 const plugin = {
   id: 'emptyDoughnut',
   afterDraw(chart, args, options) {

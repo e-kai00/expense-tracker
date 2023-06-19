@@ -9,3 +9,22 @@ body {
   main {
     flex: 1 0 auto;
   }
+
+  .custom-btn {
+    background-color: #ffffff;
+    color: #262626;
+    border: 2px solid #1de9b6;
+    border-radius: 12px;
+  }
+
+
+/* buttons in index.html ---- add media query */
+.holder-container{
+  position: relative;
+}
+
+.holder {
+  position: absolute;
+  right: 0;
+  bottom: 20px;
+}
