@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Q, Sum
-from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from .models import Transactions, ExpenseCategory, AccountCategory
@@ -130,8 +129,8 @@ def transactions(request):                      # check all views below for user
         (11, 'November'), 
         (12, 'December')
     ]
-
-    transactions = Transactions.objects.all()
+    
+    transactions = Transactions.objects.filter(user=request.user)
 
     if request.method == 'POST':
         month = int(request.POST.get('month'))
@@ -146,8 +145,9 @@ def transactions(request):                      # check all views below for user
 
 @login_required
 def categories(request):
-    categories = ExpenseCategory.objects.all()
+    categories = ExpenseCategory.objects.filter(user=request.user)
     return render(request, 'trackerapp/categories.html', {'categories': categories})
+
 
 @login_required
 def categories_add(request):
@@ -157,7 +157,6 @@ def categories_add(request):
             category = form.save(commit=False)
             category.user = request.user
             category.save()
-
             # retrieve url of previous page and redirect to it
             previous_page = request.POST.get('previous_page')
             return redirect(previous_page)
@@ -192,7 +191,7 @@ def categories_delete(request, category_id):
 
 @login_required
 def accounts(request):
-    accounts = AccountCategory.objects.all()
+    accounts = AccountCategory.objects.filter(user=request.user)
     return render(request, 'trackerapp/accounts.html', {'accounts': accounts})
 
 
@@ -200,13 +199,14 @@ def accounts(request):
 
 @login_required
 def expenses_by_category(request):
-    expense_categories = ExpenseCategory.objects.filter(user=request.user)
+    user=request.user
+    expense_categories = ExpenseCategory.objects.filter(user=user)
 
     category_label = [category.category_name for category in expense_categories]
 
     total_expense = []
     for category in expense_categories:
-        transactions = Transactions.objects.filter(user=request.user, expense_category=category)
+        transactions = Transactions.objects.filter(user=user, expense_category=category)
         category_total = sum(transaction.amount for transaction in transactions)
         total_expense.append(category_total)    
 
