@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Q, Sum
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from .models import Transactions, ExpenseCategory, AccountCategory
 from .forms import TransactionForm, TransactionIncomeForm, AddCategoryForm, EditCategoryForm
@@ -8,41 +9,43 @@ import datetime
 
 
 # --------------MAIN PAGE
+
+@login_required
 def index(request):
     # get the current month and year
     now = datetime.datetime.now()
     year = now.year
     month = now.month
-
-    if request.user.is_authenticated: 
-        transactions = Transactions.objects.filter(
-            user=request.user,
-            transaction_date__year=year,
-            transaction_date__month=month
+    
+    transactions = Transactions.objects.filter(
+        user=request.user,
+        transaction_date__year=year,
+        transaction_date__month=month
     )
         # group expenses by categories, accumulate income
-        total_by_category = transactions.filter(
-            transaction_type='Expense'
-            ).values('expense_category__category_name'
-            ).annotate(total_expenses=Sum('amount'))
+    total_by_category = transactions.filter(
+        transaction_type='Expense'
+        ).values('expense_category__category_name'
+        ).annotate(total_expenses=Sum('amount')
+    )
 
-        total_income = transactions.filter(
-            transaction_type='Income'
-            ).aggregate(total=Sum('amount'))['total'] or 0
+    total_income = transactions.filter(
+        transaction_type='Income'
+        ).aggregate(total=Sum('amount'))['total'] or 0
         
         # tatal balance for month
-        balance = 0   
-        for transaction in transactions:
-            if transaction.transaction_type == 'Income':
-                balance += transaction.amount
-            else:
-                balance -= transaction.amount
+    balance = 0   
+    for transaction in transactions:
+        if transaction.transaction_type == 'Income':
+            balance += transaction.amount
+        else:
+            balance -= transaction.amount
 
-    else:
-        transactions = None
-        total_by_category = None
-        total_income = None
-        balance = None
+    # else:
+    #     transactions = None
+    #     total_by_category = None
+    #     total_income = None
+    #     balance = None
 
         
     context = {
@@ -54,6 +57,7 @@ def index(request):
     return render(request, 'trackerapp/index.html', context)
 
 
+@login_required
 def add_expense(request):        
     if request.method == 'POST':
         form = TransactionForm(request.POST)
@@ -84,6 +88,7 @@ def add_expense(request):
     return render(request, 'trackerapp/add_expense.html', {'form': form})
 
 
+@login_required
 def add_income(request):
     if request.method == 'POST':
         form = TransactionIncomeForm(request.POST)
@@ -106,6 +111,8 @@ def add_income(request):
 
 
 # --------------FILTERS
+
+@login_required
 def transactions(request):                      # check all views below for user authentication
     # filter by month
     year = datetime.datetime.now().year
@@ -136,11 +143,13 @@ def transactions(request):                      # check all views below for user
 
 
 # --------------EXPENSE CATEGORIES
+
+@login_required
 def categories(request):
     categories = ExpenseCategory.objects.all()
     return render(request, 'trackerapp/categories.html', {'categories': categories})
 
-
+@login_required
 def categories_add(request):
     if request.method == 'POST':
         form = AddCategoryForm(request.POST)
@@ -158,6 +167,7 @@ def categories_add(request):
     return render(request, 'trackerapp/categories_add.html', {'form': form})
 
 
+@login_required
 def categories_edit(request, category_id):
     category = get_object_or_404(ExpenseCategory, id=category_id, user=request.user)
 
@@ -171,6 +181,7 @@ def categories_edit(request, category_id):
     return render(request, 'trackerapp/categories_edit.html', {'form': form})
 
 
+@login_required
 def categories_delete(request, category_id):
     category = get_object_or_404(ExpenseCategory, id=category_id, user=request.user)
     category.delete()
@@ -178,12 +189,16 @@ def categories_delete(request, category_id):
 
 
 # --------------ACCOUNT CATEGORIES -------postponed
+
+@login_required
 def accounts(request):
     accounts = AccountCategory.objects.all()
     return render(request, 'trackerapp/accounts.html', {'accounts': accounts})
 
 
 # --------------Chart.js
+
+@login_required
 def expenses_by_category(request):
     expense_categories = ExpenseCategory.objects.filter(user=request.user)
 

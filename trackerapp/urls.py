@@ -12,7 +12,5 @@ urlpatterns = [
     path('categories/edit/<int:category_id>/', views.categories_edit, name='categories_edit'),
     path('categories/delete/<int:category_id>/', views.categories_delete, name='categories_delete'),
     path('accounts', views.accounts, name='accounts'),
-    path('api-data/', views.expenses_by_category, name='api-data'),
-    
-    
+    path('api-data/', views.expenses_by_category, name='api-data'),    
 ]
