@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.safestring import mark_safe
-from datetime import date
 
 
 #---------- ACCOUNT CATEGORY (e.g. cash, savings, cards)
@@ -9,7 +8,7 @@ class AccountCategory(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     account_name = models.CharField(max_length=200, unique=True, default='Cash')
-    balance = models.DecimalField(max_digits=10, decimal_places=2)
+    balance = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
 
     def __str__(self):
         return self.account_name  

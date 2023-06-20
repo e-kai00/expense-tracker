@@ -3,7 +3,7 @@ from django.db.models import Q, Sum
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from .models import Transactions, ExpenseCategory, AccountCategory
-from .forms import TransactionForm, TransactionIncomeForm, AddCategoryForm, EditCategoryForm
+from .forms import TransactionForm, TransactionIncomeForm, AddCategoryForm, EditCategoryForm, AddAccountsForm
 import datetime
 
 
@@ -65,6 +65,8 @@ def add_expense(request):
             # get the user account category
             user = request.user            
             account_category = AccountCategory.objects.get(user=user)
+            # account_category, created = AccountCategory.objects.get_or_create(user=user, account_name='my Cash', defaults={'balance': 0.0})
+
 
             # get the expense category instance
             expense_category_option = form.cleaned_data['expense_category']
@@ -112,7 +114,7 @@ def add_income(request):
 # --------------FILTERS
 
 @login_required
-def transactions(request):                      # check all views below for user authentication
+def transactions(request):
     # filter by month
     year = datetime.datetime.now().year
     month_choices = [
@@ -193,6 +195,21 @@ def categories_delete(request, category_id):
 def accounts(request):
     accounts = AccountCategory.objects.filter(user=request.user)
     return render(request, 'trackerapp/accounts.html', {'accounts': accounts})
+
+
+@login_required
+def accounts_add(request):
+    if request.method == 'POST':
+        form = AddAccountsForm(request.POST)
+        if form.is_valid():
+            account = form.save(commit=False)
+            account.user = request.user
+            account.save()            
+            return redirect('accounts')
+    else:
+        form = AddAccountsForm()
+
+    return render(request, 'trackerapp/accounts_add.html', {'form': form})
 
 
 # --------------Chart.js

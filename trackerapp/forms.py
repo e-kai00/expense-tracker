@@ -1,5 +1,5 @@
 from django import forms
-from .models import Transactions, ExpenseCategory
+from .models import Transactions, ExpenseCategory, AccountCategory
 
 
 class TransactionForm(forms.ModelForm):
@@ -41,6 +41,12 @@ class EditCategoryForm(forms.ModelForm):
     class Meta:
         model = ExpenseCategory
         fields = ['category_name']
+
+
+class AddAccountsForm(forms.ModelForm):
+    class Meta:
+        model = AccountCategory
+        fields = ['account_name', 'balance']
       
     
 

@@ -6,7 +6,7 @@
 
 <div class="row">
     <div class="col s12 center-align">
-        <a href="/accounts" class="btn-large light-blue darken-2">
+        <a href="/accounts_add" class="btn-large light-blue darken-2">
             Add account <i class="fas fa-plus-square right"></i>
         </a>
     </div>
@@ -17,7 +17,7 @@
     <div class="col s12 m6 l3">
         <div class="card teal accent-4 center-align">
             <div class="card-content white-text">
-                <span class="card-title">{{ account.account_name }}</span>
+                <span class="card-title">{{ account.account_name }} ${{ account.balance }}</span>
             </div>
             <div class="card-action white">
                 <a href="#"><i class="material-icons" title="Edit">edit</i></a>

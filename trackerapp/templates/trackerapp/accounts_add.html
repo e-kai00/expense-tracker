@@ -1,0 +1,24 @@
+{% extends "trackerapp/base.html" %}
+{% load materializecss %}
+
+{% block content %}
+
+<div class="row card-panel grey lighten-5">
+    <form class="col s12" method="POST" action="{% url 'accounts_add' %}">
+        {% csrf_token %} 
+
+ 
+        {{ form|materializecss:'m6' }}  <!-- style it later -->
+     
+        <div class="row">
+            <div class="col s12 center-align">
+                <button type="submit" class="btn-large light-blue darken-1">
+                    Add Account <i class="fas fa-plus-square right"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+
