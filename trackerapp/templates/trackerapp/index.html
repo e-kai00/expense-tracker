@@ -3,27 +3,31 @@
 {% block content %}
 <div class="row holder-container">
 
-    <!-- expenses chart -->
+    <!-- expenses by category in Pie Chart -->
     <div class="col s12 m6">
         <canvas id="myChart" width="400" height="400"></canvas>
     </div>
-
+    
     <div class="col s12 m6">
+        <h5 class="center-align">{% now "F" %}</h5>
         <p><i class="fa-solid fa-sack-dollar"></i> Income: ${{ total_income }}</p>
 
         {% for total in total_by_category %}
         <p><i class="fa-solid fa-tag fa-rotate-90"></i> {{ total.expense_category__category_name }}: ${{ total.total_expenses }}</p>
         {% endfor %}
+
         <div class="holder">
-            <a class="btn-floating btn-large waves-effect waves-light red lighten-1" href="/add_expense"><i class="material-icons">remove</i></a>
+            <a class="btn-floating btn-large waves-effect waves-light red lighten-1" href="/add_expense"><i
+                    class="material-icons">remove</i></a>
             <a class=" btn-large custom-btn" href="/transactions">Balance ${{ balance }}</a>
-            <a class="btn-floating btn-large waves-effect waves-light teal accent-4" href="/add_income"><i class="material-icons">add</i></a>
+            <a class="btn-floating btn-large waves-effect waves-light teal accent-4" href="/add_income"><i
+                    class="material-icons">add</i></a>
         </div>
     </div>
-
 </div>
 {% endblock %}
 
+<!-- Chart.js  -->
 {% block scripts %}
 <script>
     var endpoint = '{% url "api-data" %}'
