@@ -14,6 +14,7 @@ class TransactionForm(forms.ModelForm):
         initial='Expense'
     ) 
    
+   # filter choices for expense_category based on logged-in user
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user')
         super(TransactionForm, self).__init__(*args, **kwargs)
