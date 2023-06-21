@@ -19,7 +19,14 @@ class AccountCategory(models.Model):
 class ExpenseCategory(models.Model):    
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    category_name = models.CharField(max_length=200, unique=True)
+    category_name = models.CharField(max_length=200)
+
+    class Meta:
+        ordering = ['category_name']
+        # unique_together = [['user', 'category_name']]
+        constraints = [
+            models.UniqueConstraint(fields=['user', 'category_name'], name='unique_category-per_user')
+        ]
 
     def __str__(self):
         return self.category_name
@@ -36,7 +43,7 @@ class Transactions(models.Model):
     TRANSACTION_TYPE_CHOICE = (('Expense', 'Expense'), ('Income', 'Income'))
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    account_category = models.ForeignKey(AccountCategory, on_delete=models.CASCADE, default=None, blank=True, null=True)
+    # account_category = models.ForeignKey(AccountCategory, on_delete=models.CASCADE, default=None, blank=True, null=True)
     expense_category = models.ForeignKey(ExpenseCategory, on_delete=models.CASCADE, default=None, blank=True, null=True)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     transaction_type = models.CharField(max_length=7, choices=TRANSACTION_TYPE_CHOICE)

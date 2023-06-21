@@ -2,7 +2,8 @@ from django import forms
 from .models import Transactions, ExpenseCategory, AccountCategory
 
 
-class TransactionForm(forms.ModelForm):
+class TransactionForm(forms.ModelForm):   
+
     expense_category = forms.ModelChoiceField(
         ExpenseCategory.objects.all(), 
         empty_label=None,         
@@ -13,6 +14,11 @@ class TransactionForm(forms.ModelForm):
         initial='Expense'
     ) 
    
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user')
+        super(TransactionForm, self).__init__(*args, **kwargs)
+        self.fields['expense_category'].queryset = ExpenseCategory.objects.filter(user=user)
+
     class Meta:
         model = Transactions
         fields = ['amount', 'expense_category', 'transaction_type', 'notes']
@@ -43,10 +49,10 @@ class EditCategoryForm(forms.ModelForm):
         fields = ['category_name']
 
 
-class AddAccountsForm(forms.ModelForm):
-    class Meta:
-        model = AccountCategory
-        fields = ['account_name', 'balance']
+# class AddAccountsForm(forms.ModelForm):
+#     class Meta:
+#         model = AccountCategory
+#         fields = ['account_name', 'balance']
       
     
 
