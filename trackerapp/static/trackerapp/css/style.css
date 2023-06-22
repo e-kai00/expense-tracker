@@ -42,3 +42,7 @@ body {
 .transaction-list li {
   margin-bottom: 20px;
 }
+
+.brand-logo {
+  margin-left: 10px;
+}

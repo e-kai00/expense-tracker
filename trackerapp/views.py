@@ -6,7 +6,6 @@ from .models import Transactions, ExpenseCategory
 from .forms import TransactionForm, TransactionIncomeForm, AddCategoryForm, EditCategoryForm
 import datetime
 
-
 # --------------MAIN PAGE
 
 @login_required
@@ -38,14 +37,7 @@ def index(request):
         if transaction.transaction_type == 'Income':
             balance += transaction.amount
         else:
-            balance -= transaction.amount
-
-    # else:
-    #     transactions = None
-    #     total_by_category = None
-    #     total_income = None
-    #     balance = None
-
+            balance -= transaction.amount   
         
     context = {
         'transactions': transactions,

@@ -7,7 +7,8 @@
     <div class="col s12 m6">
         <canvas id="myChart" width="400" height="400"></canvas>
     </div>
-    
+
+    <!-- transaction list -->
     <div class="col s12 m6">
         <h5 class="center-align teal-text text-accent-4">{% now "F" %}</h5>
 
@@ -21,6 +22,7 @@
             </ul>
         </div>        
 
+        <!-- transactions control buttons -->
         <div class="button-box">
             <a class="btn-floating btn-large waves-effect waves-light red lighten-1" href="/add_expense"><i class="material-icons">remove</i></a>
             <a class=" btn-large custom-btn" href="/transactions" title="See all transactions">Balance ${{ balance }}</a>
