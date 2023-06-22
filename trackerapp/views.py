@@ -154,6 +154,7 @@ def categories_add(request):
     user=request.user
     if request.method == 'POST':
         form = AddCategoryForm(request.POST)
+        form.request = request
         if form.is_valid():
             category = form.save(commit=False)
             category.user = user
@@ -163,6 +164,7 @@ def categories_add(request):
             return redirect(previous_page)
     else:
         form = AddCategoryForm()
+        form.request = request
 
     return render(request, 'trackerapp/categories_add.html', {'form': form})
 

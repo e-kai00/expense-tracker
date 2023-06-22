@@ -23,8 +23,19 @@ body {
   position: relative;
 }
 
+
+
 .holder {
   position: absolute;
   right: 0;
   bottom: 20px;
+}
+
+.transaction-container {  
+  display: flex;  
+  justify-content: space-around;
+}
+
+.transaction-list li {
+  margin-bottom: 20px;
 }

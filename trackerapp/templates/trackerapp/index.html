@@ -9,20 +9,28 @@
     </div>
     
     <div class="col s12 m6">
-        <h5 class="center-align">{% now "F" %}</h5>
-        <p><i class="fa-solid fa-sack-dollar"></i> Income: ${{ total_income }}</p>
+        <h5 class="center-align teal-text text-accent-4">{% now "F" %}</h5>
+
+        <div class="transaction-container">
+        <ul class="transaction-list">
+        <li><i class="fa-solid fa-sack-dollar"></i> Income: ${{ total_income }}</li>
 
         {% for total in total_by_category %}
-        <p><i class="fa-solid fa-tag fa-rotate-90"></i> {{ total.expense_category__category_name }}: ${{ total.total_expenses }}</p>
+        <li><i class="fa-solid fa-tag fa-rotate-90"></i> {{ total.expense_category__category_name }}: ${{ total.total_expenses }}</li>
         {% endfor %}
+        </ul>
+        </div>
+        
 
         <div class="holder">
             <a class="btn-floating btn-large waves-effect waves-light red lighten-1" href="/add_expense"><i
                     class="material-icons">remove</i></a>
-            <a class=" btn-large custom-btn" href="/transactions">Balance ${{ balance }}</a>
+            <a class=" btn-large custom-btn" href="/transactions" title="See all transactions">Balance ${{ balance }}</a>
             <a class="btn-floating btn-large waves-effect waves-light teal accent-4" href="/add_income"><i
                     class="material-icons">add</i></a>
         </div>
+    
+        
     </div>
 </div>
 {% endblock %}

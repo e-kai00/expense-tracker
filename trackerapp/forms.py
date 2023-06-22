@@ -42,7 +42,17 @@ class AddCategoryForm(forms.ModelForm):
         model = ExpenseCategory
         fields = ['category_name']
 
-# does not work, needs fixing
+    # handle error for non-unique category name
+    def clean_category_name(self):
+        category_name = self.cleaned_data.get('category_name')
+
+        if category_name:            
+            if ExpenseCategory.objects.filter(user=self.request.user, category_name=category_name).exists():
+                raise forms.ValidationError("Category with this name already exists.")
+
+        return category_name
+
+
 class EditCategoryForm(forms.ModelForm):
     
     class Meta:
