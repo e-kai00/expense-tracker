@@ -19,16 +19,19 @@ body {
 
 
 /* buttons in index.html ---- add media query */
-.holder-container{
-  position: relative;
+/* .content-box{
+  display: flex;  
+  justify-content: space-around;
+} */
+
+.button-box {
+  display: flex;  
+  justify-content: center;  
 }
 
-
-
-.holder {
-  position: absolute;
-  right: 0;
-  bottom: 20px;
+.button-box a {
+  margin-left: 3px;
+  margin-right: 3px;
 }
 
 .transaction-container {  
