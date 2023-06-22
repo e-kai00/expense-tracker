@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.utils.safestring import mark_safe
 
 
 #---------- ACCOUNT CATEGORY (e.g. cash, savings, cards)
@@ -51,9 +50,8 @@ class Transactions(models.Model):
     notes = models.TextField(blank=True)   
     
     def __str__(self):
-        if self.transaction_type == 'Income':
-            income_icon = '<i class="fa-solid fa-sack-dollar fa-xl"></i>'
-            return mark_safe(f'${self.amount} - {income_icon}')
+        if self.transaction_type == 'Income':            
+            return f'${self.amount} - {self.transaction_type}'
         else:
             return f'${self.amount} - {self.expense_category} - {self.transaction_type}'
     

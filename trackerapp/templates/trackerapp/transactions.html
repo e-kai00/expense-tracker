@@ -1,37 +1,34 @@
 {% extends "trackerapp/base.html" %}
 
 {% block content %}
-
 <div class="row">
-    <div class="col s12 m6">
-
-        <p>chart placeholder</p>
-
+    <!-- select month -->
+    <div class="input-field col s4 offset-s8">
+        <form method="post">
+            {% csrf_token %}
+            <label for="month">Select month:</label>
+            <div class="month-filter">
+                <select id="month" name="month">
+                    {% for month_number, month_name in month_choices %}
+                    <option value="{{ month_number }}">{{ month_name }}</option>
+                    {% endfor %}
+                </select>
+                <button class="btn waves-effect waves-light teal accent-4" type="submit">
+                    <i class="material-icons">filter_alt</i>
+                </button>
+            </div>
+        </form>
     </div>
 
-    <div class="col s12 m6">
-        <!-- iterate  -->
-        <p>Total Expenses:</p>
+    <!-- transactions for selected month -->
+    <div class="col s12">        
+        <p>Your transactions for ***(selected month)</p>
         <ul>
             {% for expense in transactions %}
             <li>{{ expense }}</li>
             {% endfor %}
         </ul>
     </div>
-
-    <div class="input-field col s12">
-        <form method="post">
-            {% csrf_token %}
-            <label for="month">Choose a month:</label>
-            <select id="month" name="month">
-                {% for month_number, month_name in month_choices %}
-                <option value="{{ month_number }}">{{ month_name }}</option>
-                {% endfor %}
-            </select>
-            <button type="submit">Filter</button>
-    </div>
-    </form>
 </div>
-
 
 {% endblock %}

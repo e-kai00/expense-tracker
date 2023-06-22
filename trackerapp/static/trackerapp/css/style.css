@@ -17,13 +17,6 @@ body {
     border-radius: 12px;
   }
 
-
-/* buttons in index.html ---- add media query */
-/* .content-box{
-  display: flex;  
-  justify-content: space-around;
-} */
-
 .button-box {
   display: flex;  
   justify-content: center;  
@@ -45,4 +38,13 @@ body {
 
 .brand-logo {
   margin-left: 10px;
+}
+
+.month-filter {
+  display: flex;
+  align-items: center;  
+}
+
+.month-filter button {
+  margin-left: 15px;
 }
