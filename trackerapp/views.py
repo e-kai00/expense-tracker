@@ -175,11 +175,13 @@ def categories_edit(request, category_id):
 
     if request.method == 'POST':
         form = EditCategoryForm(request.POST, instance=category)
+        form.request = request
         if form.is_valid():
             form.save()            
             return redirect('categories')
     else:
         form = EditCategoryForm(instance=category)
+        form.request = request
     return render(request, 'trackerapp/categories_edit.html', {'form': form})
 
 

@@ -59,11 +59,21 @@ class EditCategoryForm(forms.ModelForm):
         model = ExpenseCategory
         fields = ['category_name']
 
+    # handle error for non-unique category name
+    def clean_category_name(self):
+        category_name = self.cleaned_data.get('category_name')
 
-# class AddAccountsForm(forms.ModelForm):
-#     class Meta:
-#         model = AccountCategory
-#         fields = ['account_name', 'balance']
+        if category_name:            
+            if ExpenseCategory.objects.filter(user=self.request.user, category_name=category_name).exists():
+                raise forms.ValidationError("Category with this name already exists.")
+
+        return category_name
+        
+
+    
+
+
+
       
     
 
