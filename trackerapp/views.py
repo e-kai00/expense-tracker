@@ -165,7 +165,7 @@ def categories_add(request):
             category.save()
             # retrieve url of previous page and redirect to it
             previous_page = request.POST.get('previous_page')
-            return redirect(previous_page)
+            return redirect(previous_page)        
     else:
         form = AddCategoryForm()
         form.request = request

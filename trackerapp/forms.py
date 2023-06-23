@@ -1,5 +1,5 @@
 from django import forms
-from .models import Transactions, ExpenseCategory, AccountCategory
+from .models import Transactions, ExpenseCategory
 
 
 class TransactionForm(forms.ModelForm):   
@@ -36,7 +36,7 @@ class TransactionIncomeForm(forms.ModelForm):
         fields = ['amount', 'transaction_type', 'notes']
 
 
-class AddCategoryForm(forms.ModelForm):    
+class AddCategoryForm(forms.ModelForm):   
 
     class Meta:
         model = ExpenseCategory
@@ -48,7 +48,7 @@ class AddCategoryForm(forms.ModelForm):
 
         if category_name:            
             if ExpenseCategory.objects.filter(user=self.request.user, category_name=category_name).exists():
-                raise forms.ValidationError("Category with this name already exists.")
+                raise forms.ValidationError("This category is already exists. Enter another category name.")
 
         return category_name
 
@@ -65,7 +65,7 @@ class EditCategoryForm(forms.ModelForm):
 
         if category_name:            
             if ExpenseCategory.objects.filter(user=self.request.user, category_name=category_name).exists():
-                raise forms.ValidationError("Category with this name already exists.")
+                raise forms.ValidationError("This category is already exists. Enter another category name.")
 
         return category_name
         

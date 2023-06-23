@@ -1,4 +1,5 @@
 {% extends "trackerapp/base.html" %}
+{% load materializecss %}
 
 {% block content %}
 <h4 class="center-align page-heading">Add new ctegory</h4>
@@ -7,7 +8,7 @@
         {% csrf_token %} 
     <!-- hidden field to retrieve previous page -->
     <input type="hidden" id="previous_page" name="previous_page">
-        {{ form.category_name }}     
+        {{ form|materializecss }}     
         <div class="row">
             <div class="col s12 center-align">
                 <button type="submit" class="btn-large red lighten-1">
