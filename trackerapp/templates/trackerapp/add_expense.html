@@ -1,19 +1,22 @@
 {% extends "trackerapp/base.html" %}
+{% load materializecss %}
 
 {% block content %}
-
-<div class="row">
-    <div class="col s12">
-        <h3>New expense</h3>
-
+<h4 class="center-align page-heading">New expense</h4>
+<div class="row card-panel grey lighten-5">
+    <div class="col s12 l8 offset-l2">
         <form method="POST" action="{% url 'add_expense' %}">
-            {% csrf_token %}            
-            {{ form }}            
-            <input type="submit" value="Submit">
+            {% csrf_token %}
+            {{ form|materializecss }}
+            <div class="col s12 center-align">
+                <button type="submit" class="btn-large red lighten-1">
+                    Add <i class="fas fa-plus-square right"></i>
+                </button>
+            </div>
+            <!-- <input type="submit" value="Submit"> -->
         </form>
-        <a class="btn-floating btn-large waves-effect waves-light red" href="/categories_add"><i class="material-icons">add</i></a>
-
+        <a class="" href="{% url 'categories_add' %}"><i class="material-icons">add</i> Add new category</a>
+        <!-- <a class="btn-floating btn-large waves-effect waves-light red" href="/categories_add"><i class="material-icons">add</i></a> -->
     </div>
 </div>
-
 {% endblock %}
