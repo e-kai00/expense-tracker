@@ -1,9 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Merienda&family=Quicksand:wght@400;600&display=swap');
+
+/* font-family: 'Merienda', cursive;
+font-family: 'Quicksand', sans-serif; */
+
 
 /* Materialize footer */
 body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    font-family: Quicksand, sans-serif;
   }
 
 
@@ -13,6 +19,7 @@ body {
 
 
   .brand-logo {
+    font-family: Merienda, sans-serif;    
     margin-left: 10px;
   }
 
@@ -34,6 +41,15 @@ body {
 
 .page-heading {
     margin-bottom: 5%;
+    font-family: Merienda, sans-serif;  
+}
+
+.btn-large {
+  text-transform: none;  
+}
+
+.month-style {
+  font-family: Merienda, sans-serif;
 }
 
 /* -----------------MAIN PAGE */

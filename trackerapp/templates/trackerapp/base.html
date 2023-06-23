@@ -29,7 +29,7 @@
                     <li><a href="{% url 'categories' %}"><i class="material-icons"title='Categories'>style</i></a></li>                    
                                         
                     {% if user.is_authenticated %}
-                    <li><span>Welcome, {{ user.username }}</span></li>               
+                    <li><span><em>Welcome, {{ user.username }}</em></span></li>               
                     <li class="nav-item">                        
                         <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
                     </li>
