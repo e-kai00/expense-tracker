@@ -1,14 +1,14 @@
 {% extends "trackerapp/base.html" %}
 {% load i18n %}
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
-{% block content %}
 
+{% block content %}
 <div class="container">
   <div class="row">
     <div class="col s8 offset-s2">
       <h4 class="center-align">{% trans "Sign In" %}</h4>
-      <p>{% blocktrans %}If you have not created an account yet, then please
-        <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}
+      <p>{% blocktrans %}Ready to dive in? If you haven't created an account yet, now's the perfect time to
+        <a href="{{ signup_url }}">sign up</a>. {% endblocktrans %}
       </p>
 
       <form class="login" method="POST" action="{% url 'account_login' %}">
