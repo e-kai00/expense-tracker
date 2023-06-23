@@ -30,9 +30,15 @@
                 {% for expense in transactions %}
 
                 {% if expense.transaction_type == 'Income' %}
-                <li><span class="date-display">{{ expense.transaction_date|date:'d M' }}</span> <i class="fa-solid fa-sack-dollar"></i> {{ expense }}</li>
+                <li>
+                    <span class="date-display">{{ expense.transaction_date|date:'d M' }}                    
+                    </span> <i class="fa-solid fa-sack-dollar"></i> {{ expense }} <span class="notes">{{ expense.notes }}</span>
+                </li>
                 {% else %}
-                <li><span class="date-display">{{ expense.transaction_date|date:'d M' }}</span> <i class="fa-solid fa-tag fa-rotate-90"></i> {{ expense }}</li>
+                <li>
+                    <span class="date-display">{{ expense.transaction_date|date:'d M' }}                    
+                    </span> <i class="fa-solid fa-tag fa-rotate-90"></i> {{ expense }} <span class="notes">{{ expense.notes }}</span>
+                </li>
                 {% endif %}
 
                 <!-- <li>{{ expense }}</li> -->
@@ -41,5 +47,4 @@
         </div>
     </div>
 </div>
-
 {% endblock %}

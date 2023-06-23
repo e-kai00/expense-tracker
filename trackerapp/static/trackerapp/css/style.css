@@ -83,3 +83,11 @@ body {
   font-style: oblique;
   color: #666666
 }
+
+.notes {
+  margin-left: 20px;
+  font-size: smaller;
+  font-style: oblique;
+  /* text-decoration: underline; */
+  color: #666666
+}
