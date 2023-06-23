@@ -40,6 +40,10 @@ body {
   margin-left: 10px;
 }
 
+
+/* -----------------FILTER PAGE */
+
+/* month filter */
 .month-filter {
   display: flex;
   align-items: center;  
@@ -47,4 +51,14 @@ body {
 
 .month-filter button {
   margin-left: 15px;
+}
+
+/* transaction list */
+.centered-box {
+  display: flex;
+  justify-content: center;
+}
+
+.left-aligned li {
+  text-align: left;
 }

@@ -3,8 +3,9 @@
 {% block content %}
 <div class="row">
     <!-- select month -->
-    <div class="input-field col s4 offset-s8">
-        <form method="post">
+    <!-- <div class="input-field col s12 m4 offset-s8"> -->
+    <div class="input-field col s12">
+        <form method="post" class="right">
             {% csrf_token %}
             <label for="month">Select month:</label>
             <div class="month-filter">
@@ -21,13 +22,23 @@
     </div>
 
     <!-- transactions for selected month -->
-    <div class="col s12">        
-        <p>Your transactions for ***(selected month)</p>
-        <ul>
-            {% for expense in transactions %}
-            <li>{{ expense }}</li>
-            {% endfor %}
-        </ul>
+    <div class="col s12 center-align">
+        <p>Your transactions for:</p>
+        <p><strong>{{ selected_month }}</strong></p>
+        <div class="centered-box">
+            <ul class="left-aligned transaction-list">
+                {% for expense in transactions %}
+
+                {% if expense.transaction_type == 'Income' %}
+                <li><i class="fa-solid fa-sack-dollar"></i>{{ expense }}</li>
+                {% else %}
+                <li><i class="fa-solid fa-tag fa-rotate-90"></i>{{ expense }}</li>
+                {% endif %}
+
+                <!-- <li>{{ expense }}</li> -->
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 </div>
 

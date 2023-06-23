@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.db.models import Q, Sum
+from django.db.models import Q, F, Sum
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from .models import Transactions, ExpenseCategory
@@ -122,15 +122,27 @@ def transactions(request):
         (12, 'December')
     ]
     
-    transactions = Transactions.objects.filter(user=request.user)
+    transactions = Transactions.objects.filter(
+        user=request.user).order_by(
+        F('transaction_date').desc()
+    )
+    
+    month = None
+    selected_month = None
 
     if request.method == 'POST':
         month = int(request.POST.get('month'))
         transactions = transactions.filter(
             Q(transaction_date__year=year) & Q(transaction_date__month=month)
         )
+    else:
+        month = datetime.datetime.now().month
+
+    for month_num, month_name in month_choices:
+        if month_num == month:
+            selected_month = month_name
       
-    return render(request, 'trackerapp/transactions.html', {'transactions': transactions, 'month_choices': month_choices})
+    return render(request, 'trackerapp/transactions.html', {'transactions': transactions, 'month_choices': month_choices, 'selected_month': selected_month})
 
 
 # --------------EXPENSE CATEGORIES
