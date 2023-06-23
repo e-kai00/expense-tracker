@@ -36,6 +36,10 @@ body {
   margin-bottom: 20px;
 }
 
+.transaction-list i {
+  margin-right: 5px;
+} 
+
 .brand-logo {
   margin-left: 10px;
 }
@@ -61,4 +65,11 @@ body {
 
 .left-aligned li {
   text-align: left;
+}
+
+.date-display {
+  margin-right: 20px;
+  font-size: smaller;
+  font-style: oblique;
+  color: #666666
 }

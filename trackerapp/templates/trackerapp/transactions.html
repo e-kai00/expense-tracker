@@ -23,16 +23,16 @@
 
     <!-- transactions for selected month -->
     <div class="col s12 center-align">
-        <p>Your transactions for:</p>
-        <p><strong>{{ selected_month }}</strong></p>
+        <h5><i class="fa-solid fa-calendar-days teal-text text-accent-4"></i> Reviewing your transactions for:</h5>
+        <h5 class="teal-text text-accent-4"><strong>{{ selected_month }}</strong></h5>
         <div class="centered-box">
             <ul class="left-aligned transaction-list">
                 {% for expense in transactions %}
 
                 {% if expense.transaction_type == 'Income' %}
-                <li><i class="fa-solid fa-sack-dollar"></i>{{ expense }}</li>
+                <li><span class="date-display">{{ expense.transaction_date|date:'d M' }}</span> <i class="fa-solid fa-sack-dollar"></i> {{ expense }}</li>
                 {% else %}
-                <li><i class="fa-solid fa-tag fa-rotate-90"></i>{{ expense }}</li>
+                <li><span class="date-display">{{ expense.transaction_date|date:'d M' }}</span> <i class="fa-solid fa-tag fa-rotate-90"></i> {{ expense }}</li>
                 {% endif %}
 
                 <!-- <li>{{ expense }}</li> -->

@@ -51,9 +51,9 @@ class Transactions(models.Model):
     
     def __str__(self):
         if self.transaction_type == 'Income':            
-            return f'${self.amount} - {self.transaction_type}'
+            return f'{self.transaction_type}  ${self.amount}'
         else:
-            return f'${self.amount} - {self.expense_category} - {self.transaction_type}'
+            return f'{self.expense_category}  ${self.amount}'
     
 
   
