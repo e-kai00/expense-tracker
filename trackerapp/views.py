@@ -53,11 +53,8 @@ def add_expense(request):
     user = request.user       
     if request.method == 'POST':
         form = TransactionForm(request.POST, user=user)
-        if form.is_valid():
-                     
-            # account_category = AccountCategory.objects.get(user=user)
-            # account_category, created = AccountCategory.objects.get_or_create(user=user, account_name='my Cash', defaults={'balance': 0.0})
-
+        if form.is_valid():                     
+            
             # get the expense category instance
             expense_category_option = form.cleaned_data['expense_category']
             expense_category = get_object_or_404(
@@ -68,8 +65,7 @@ def add_expense(request):
 
             # create transaction with the expense category
             transaction = form.save(commit=False)
-            transaction.user = user
-            # transaction.account_category = account_category
+            transaction.user = user           
             transaction.expense_category = expense_category
             form.save()       
             return redirect('index')
@@ -83,16 +79,10 @@ def add_expense(request):
 def add_income(request):
     if request.method == 'POST':
         form = TransactionIncomeForm(request.POST)
-        if form.is_valid():
-
-            # get the user account category
+        if form.is_valid():            
             user = request.user            
-            # account_category = AccountCategory.objects.get(user=user)
-           
-            # create transaction with the acount category
             transaction = form.save(commit=False)
-            transaction.user = user
-            # transaction.account_category = account_category            
+            transaction.user = user                       
             form.save()       
             return redirect('index')
     else:
@@ -194,29 +184,6 @@ def categories_delete(request, category_id):
     category = get_object_or_404(ExpenseCategory, id=category_id, user=request.user)
     category.delete()
     return redirect('categories')
-
-
-# --------------ACCOUNT CATEGORIES -------postponed
-
-# @login_required
-# def accounts(request):
-#     accounts = AccountCategory.objects.filter(user=request.user)
-#     return render(request, 'trackerapp/accounts.html', {'accounts': accounts})
-
-
-# @login_required
-# def accounts_add(request):
-#     if request.method == 'POST':
-#         form = AddAccountsForm(request.POST)
-#         if form.is_valid():
-#             account = form.save(commit=False)
-#             account.user = request.user
-#             account.save()            
-#             return redirect('accounts')
-#     else:
-#         form = AddAccountsForm()
-
-#     return render(request, 'trackerapp/accounts_add.html', {'form': form})
 
 
 # --------------Chart.js

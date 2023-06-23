@@ -12,11 +12,9 @@
                 <button type="submit" class="btn-large red lighten-1">
                     Add <i class="fas fa-plus-square right"></i>
                 </button>
-            </div>
-            <!-- <input type="submit" value="Submit"> -->
+            </div>            
         </form>
-        <a class="" href="{% url 'categories_add' %}"><i class="material-icons">add</i> Add new category</a>
-        <!-- <a class="btn-floating btn-large waves-effect waves-light red" href="/categories_add"><i class="material-icons">add</i></a> -->
+        <a href="{% url 'categories_add' %}"><i class="material-icons">add</i> Add new category</a>        
     </div>
 </div>
 {% endblock %}

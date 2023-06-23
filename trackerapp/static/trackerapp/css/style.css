@@ -18,6 +18,7 @@ body {
 
 
 /* -----------------GENERAL STYLING*/
+
 .transaction-container {  
   display: flex;  
   justify-content: space-around;
@@ -30,7 +31,6 @@ body {
 .transaction-list i {
   margin-right: 5px;
 } 
-
 
 .page-heading {
     margin-bottom: 5%;
@@ -87,7 +87,6 @@ body {
 .notes {
   margin-left: 20px;
   font-size: smaller;
-  font-style: oblique;
-  /* text-decoration: underline; */
+  font-style: oblique;  
   color: #666666
 }

@@ -2,8 +2,7 @@
 
 {% block content %}
 <div class="row">
-    <!-- select month -->
-    <!-- <div class="input-field col s12 m4 offset-s8"> -->
+    <!-- dropdown to select month -->   
     <div class="input-field col s12">
         <form method="post" class="right">
             {% csrf_token %}
@@ -21,14 +20,13 @@
         </form>
     </div>
 
-    <!-- transactions for selected month -->
+    <!-- transaction list for selected month -->
     <div class="col s12 center-align">
         <h5><i class="fa-solid fa-calendar-days teal-text text-accent-4"></i> Reviewing your transactions for:</h5>
         <h5 class="teal-text text-accent-4"><strong>{{ selected_month }}</strong></h5>
         <div class="centered-box">
             <ul class="left-aligned transaction-list">
                 {% for expense in transactions %}
-
                 {% if expense.transaction_type == 'Income' %}
                 <li>
                     <span class="date-display">{{ expense.transaction_date|date:'d M' }}                    
@@ -39,9 +37,7 @@
                     <span class="date-display">{{ expense.transaction_date|date:'d M' }}                    
                     </span> <i class="fa-solid fa-tag fa-rotate-90"></i> {{ expense }} <span class="notes">{{ expense.notes }}</span>
                 </li>
-                {% endif %}
-
-                <!-- <li>{{ expense }}</li> -->
+                {% endif %}                
                 {% endfor %}
             </ul>
         </div>
