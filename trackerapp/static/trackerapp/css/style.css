@@ -1,32 +1,23 @@
 
-/* footer */
+/* Materialize footer */
 body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
   }
 
+
   main {
     flex: 1 0 auto;
   }
 
-  .custom-btn {
-    background-color: #ffffff;
-    color: #262626;
-    border: 2px solid #1de9b6;
-    border-radius: 12px;
+
+  .brand-logo {
+    margin-left: 10px;
   }
 
-.button-box {
-  display: flex;  
-  justify-content: center;  
-}
 
-.button-box a {
-  margin-left: 3px;
-  margin-right: 3px;
-}
-
+/* -----------------GENERAL STYLING*/
 .transaction-container {  
   display: flex;  
   justify-content: space-around;
@@ -40,10 +31,29 @@ body {
   margin-right: 5px;
 } 
 
-.brand-logo {
-  margin-left: 10px;
+
+.page-heading {
+    margin-bottom: 5%;
 }
 
+/* -----------------MAIN PAGE */
+
+.custom-btn {
+  background-color: #ffffff;
+  color: #262626;
+  border: 2px solid #1de9b6;
+  border-radius: 12px;
+}
+
+.button-box {
+  display: flex;  
+  justify-content: center;  
+}
+
+.button-box a {
+  margin-left: 3px;
+  margin-right: 3px;
+}
 
 /* -----------------FILTER PAGE */
 
