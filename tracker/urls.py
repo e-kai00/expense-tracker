@@ -15,9 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from trackerapp.error_handlers import handler404
+
 
 urlpatterns = [
     path('', include('trackerapp.urls')),
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
 ]
+
+handler404 = handler404
+

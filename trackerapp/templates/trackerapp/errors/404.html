@@ -1,0 +1,18 @@
+{% extends "trackerapp/base.html" %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col s12 m4 center-align upper bold text-shadow-2">
+            <br><br><br><br>
+            <h1 class="teal-text text-accent-4">OOPS!</h1>
+            <h2 class="">404 - Page Not Found</h2> 
+            <a href="{% url 'index' %}" class="waves-effect waves-light btn-large">Go to homepage</a>           
+            
+        </div>
+        <div class="col s12 m8 center-align">
+            <img src="#" class="responsive-img" alt="">
+        </div>
+    </div>
+
+{% endblock %}
