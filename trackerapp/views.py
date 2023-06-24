@@ -267,9 +267,18 @@ def expenses_by_category(request):
 
     category_label = [category.category_name for category in expense_categories]
 
+    now = datetime.datetime.now()
+    year = now.year
+    month = now.month
+
     total_expense = []
     for category in expense_categories:
-        transactions = Transactions.objects.filter(user=user, expense_category=category)
+        transactions = Transactions.objects.filter(
+            user=user, 
+            expense_category=category,
+            transaction_date__month=month,
+            transaction_date__year=year
+        )
         category_total = sum(transaction.amount for transaction in transactions)
         total_expense.append(category_total)
   
