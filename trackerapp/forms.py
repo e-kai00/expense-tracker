@@ -2,7 +2,17 @@ from django import forms
 from .models import Transactions, ExpenseCategory
 
 
-class TransactionForm(forms.ModelForm):   
+class TransactionForm(forms.ModelForm):
+    """
+    Form for adding an expense.
+
+    Allow the user to add an expense transaction with the required 
+    information, such as the amount, expense category and (optional) 
+    notes. 
+    The `expense_category` field is filtered based on the logged-in 
+    user, ensuring that only the user's own expense categories are 
+    available for selection.
+    """
 
     expense_category = forms.ModelChoiceField(
         ExpenseCategory.objects.all(), 
@@ -26,6 +36,13 @@ class TransactionForm(forms.ModelForm):
 
 
 class TransactionIncomeForm(forms.ModelForm):
+    """ 
+    Form for adding an income.
+
+    Allow the user to add an income transaction with the required 
+    information, such as the amount and (optional) notes.    
+    """
+    
     transaction_type = forms.CharField(
         widget=forms.HiddenInput, 
         initial='Income'
@@ -36,13 +53,20 @@ class TransactionIncomeForm(forms.ModelForm):
         fields = ['amount', 'transaction_type', 'notes']
 
 
-class AddCategoryForm(forms.ModelForm):   
+class AddCategoryForm(forms.ModelForm):
+    """
+    Form for adding a new expense category.
+
+    Allow the user to add a new expense category by specifying 
+    the category name. It will raise ValidationError, if the 
+    category name entered by the user already exists for 
+    the current user.
+    """
 
     class Meta:
         model = ExpenseCategory
         fields = ['category_name']
-
-    # handle error for non-unique category name
+    
     def clean_category_name(self):
         category_name = self.cleaned_data.get('category_name')
 
@@ -54,12 +78,19 @@ class AddCategoryForm(forms.ModelForm):
 
 
 class EditCategoryForm(forms.ModelForm):
+    """
+    Form for updating an expense category.
+
+    Allow the user to edit an expense category by specifying 
+    a new category name. It will raise ValidationError, if the 
+    category name entered by the user already exists for 
+    the current user.
+    """
     
     class Meta:
         model = ExpenseCategory
         fields = ['category_name']
 
-    # handle error for non-unique category name
     def clean_category_name(self):
         category_name = self.cleaned_data.get('category_name')
 
