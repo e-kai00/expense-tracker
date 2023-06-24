@@ -4,7 +4,7 @@
 font-family: 'Quicksand', sans-serif; */
 
 
-/* Materialize footer */
+/* Materialize sticky footer */
 body {
     display: flex;
     min-height: 100vh;
@@ -31,26 +31,32 @@ body {
   justify-content: space-around;
 }
 
+
 .transaction-list li {
   margin-bottom: 20px;
 }
 
+
 .transaction-list i {
   margin-right: 5px;
 } 
+
 
 .page-heading {
     margin-bottom: 5%;
     font-family: Merienda, sans-serif;  
 }
 
+
 .btn-large {
   text-transform: none;  
 }
 
+
 .month-style {
   font-family: Merienda, sans-serif;
 }
+
 
 /* -----------------MAIN PAGE */
 
@@ -61,15 +67,18 @@ body {
   border-radius: 12px;
 }
 
+
 .button-box {
   display: flex;  
   justify-content: center;  
 }
 
+
 .button-box a {
   margin-left: 3px;
   margin-right: 3px;
 }
+
 
 /* -----------------FILTER PAGE */
 
@@ -79,9 +88,11 @@ body {
   align-items: center;  
 }
 
+
 .month-filter button {
   margin-left: 15px;
 }
+
 
 /* transaction list */
 .centered-box {
@@ -89,9 +100,11 @@ body {
   justify-content: center;
 }
 
+
 .left-aligned li {
   text-align: left;
 }
+
 
 .date-display {
   margin-right: 20px;
@@ -99,6 +112,7 @@ body {
   font-style: oblique;
   color: #666666
 }
+
 
 .notes {
   margin-left: 20px;
