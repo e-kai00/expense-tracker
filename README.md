@@ -48,7 +48,7 @@
 <br>
 
 ## Testing
-For an overview of all the testing conducted, please refer to the [TESTING.md]() file.
+For an overview of all the testing conducted, please refer to the [TESTING.md](https://github.com/e-kai00/expense-tracker/blob/main/TESTING.md) file.
 
 <br>
 
