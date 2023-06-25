@@ -55,8 +55,8 @@
 
 **HTML**
 - [W3C HTML Validator](https://validator.w3.org/)
-  - one HTML file initially had a minor error that has been fixed (_base.html_) [Correction commit: e5680f0](https://github.com/e-kai00/expense-tracker/commit/e5680f020d3a508c025ba202106bf1a50f3bb61d)
-  - other warnings were due to the W3C not recognizing Django Templating:
+  - One HTML file initially had a minor error that has been fixed (_base.html_) [Correction commit: e5680f0](https://github.com/e-kai00/expense-tracker/commit/e5680f020d3a508c025ba202106bf1a50f3bb61d)
+  - Other warnings were due to the W3C not recognizing Django Templating:
     - Warning: Consider adding a `lang` attribute to the html start tag to declare the language of this document.
 
     - Error: Start tag seen without seeing a doctype first. Expected `<!DOCTYPE html>`.
@@ -94,13 +94,13 @@ Unexpected use of '|='.
 It takes one argument.
 This function contains 4 statements.
 Cyclomatic complexity number for this function is 1.      
-      - __Undefined variables__:
-        - $ (used for jQuery)
-        - Chart (used by Chart.js library)
-        - plugin (Chart.js plagin)
-      - __Unused variable__: myChart
-        - It occurs because the variable myChart is defined to reference the canvas element with the ID "myChart" but is not further used in the code snippet. However, this variable is necessary to initialize the Chart.js chart on the canvas element.
-      - I also received five warnings: Missing semicolon. They have been fexed.
+    - __Undefined variables__:
+      - $ (used for jQuery)
+      - Chart (used by Chart.js library)
+      - plugin (Chart.js plagin)
+    - __Unused variable__: myChart
+      - It occurs because the variable myChart is defined to reference the canvas element with the ID "myChart" but is not further used in the code snippet. However, this variable is necessary to initialize the Chart.js chart on the canvas element.
+    - I also received five warnings: Missing semicolon. They have been fexed.
 
 **Python**
 - [CI Python Linter](https://pep8ci.herokuapp.com/#)
