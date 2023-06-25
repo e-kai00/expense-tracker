@@ -25,4 +25,3 @@ urlpatterns = [
 ]
 
 handler404 = handler404
-

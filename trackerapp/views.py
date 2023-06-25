@@ -3,7 +3,12 @@ from django.db.models import Q, F, Sum
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from .models import Transactions, ExpenseCategory
-from .forms import TransactionForm, TransactionIncomeForm, AddCategoryForm, EditCategoryForm
+from .forms import (
+    TransactionForm,
+    TransactionIncomeForm,
+    AddCategoryForm,
+    EditCategoryForm
+)
 import datetime
 
 
@@ -31,8 +36,8 @@ def index(request):
 
     total_by_category = transactions.filter(
         transaction_type='Expense'
-        ).values('expense_category__category_name'
-        ).annotate(total_expenses=Sum('amount')
+    ).values('expense_category__category_name').annotate(
+        total_expenses=Sum('amount')
     )
 
     total_income = transactions.filter(
@@ -60,9 +65,9 @@ def add_expense(request):
     """
     Add expense transaction for the current user.
 
-    Allow the user to add an expense transaction by submitting a 
-    form with the required information. The transaction is 
-    associated with the current user, and the expense category is 
+    Allow the user to add an expense transaction by submitting a
+    form with the required information. The transaction is
+    associated with the current user, and the expense category is
     determined based on the user's selection. After submission
     returns to the home page.
     """
@@ -97,9 +102,9 @@ def add_income(request):
     """
     Add income transaction for the current user.
 
-    Allow the user to add an income transaction by submitting 
+    Allow the user to add an income transaction by submitting
     a form with the required information. The transaction is
-    associated with the current user. After submission returns 
+    associated with the current user. After submission returns
     to the home page.
     """
 
@@ -182,7 +187,11 @@ def categories(request):
     """ Display user's expense categories """
 
     categories = ExpenseCategory.objects.filter(user=request.user)
-    return render(request, 'trackerapp/categories.html', {'categories': categories})
+    return render(
+        request,
+        'trackerapp/categories.html',
+        {'categories': categories}
+    )
 
 
 @login_required
@@ -195,7 +204,7 @@ def categories_add(request):
     the user is redirected to the previous page.
     """
 
-    user=request.user
+    user = request.user
     if request.method == 'POST':
         form = AddCategoryForm(request.POST)
         form.request = request
@@ -218,15 +227,15 @@ def categories_edit(request, category_id):
     """
     Edit expense category.
 
-    Allow the user to update an existing expense category by submitting 
+    Allow the user to update an existing expense category by submitting
     a form with the required information. The category to be edited is
     identified by its unique `category_id`. After successful submission,
     the user is redirected to the 'categories' page.
     """
 
     category = get_object_or_404(
-        ExpenseCategory, 
-        id=category_id, 
+        ExpenseCategory,
+        id=category_id,
         user=request.user
     )
 
@@ -234,7 +243,7 @@ def categories_edit(request, category_id):
         form = EditCategoryForm(request.POST, instance=category)
         form.request = request
         if form.is_valid():
-            form.save()        
+            form.save()
             return redirect('categories')
     else:
         form = EditCategoryForm(instance=category)
@@ -252,8 +261,8 @@ def categories_delete(request, category_id):
     the user is redirected to the 'categories' page.
     """
     category = get_object_or_404(
-        ExpenseCategory, 
-        id=category_id, 
+        ExpenseCategory,
+        id=category_id,
         user=request.user
     )
     category.delete()
@@ -273,7 +282,7 @@ def expenses_by_category(request):
     corresponding total expense values.
     """
 
-    user=request.user
+    user = request.user
     expense_categories = ExpenseCategory.objects.filter(user=user)
 
     category_label = [
@@ -292,7 +301,9 @@ def expenses_by_category(request):
             transaction_date__month=month,
             transaction_date__year=year
         )
-        category_total = sum(transaction.amount for transaction in transactions)
+        category_total = sum(
+            transaction.amount for transaction in transactions
+        )
         total_expense.append(category_total)
 
     context = {
@@ -301,15 +312,3 @@ def expenses_by_category(request):
     }
 
     return JsonResponse(context)
-
-
-
-    
-
-
-
-
-            
-
-
-

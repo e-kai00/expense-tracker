@@ -35,16 +35,16 @@
 <!-- Chart.js  -->
 {% block scripts %}
 <script>
-    var endpoint = '{% url "api-data" %}'
-    var defaultData = []
-    var labels = []
+    var endpoint = '{% url "api-data" %}';
+    var defaultData = [];
+    var labels = [];
 
     $.ajax({
         method: "GET",
         url: endpoint,
         success: function (context) {
-            labels = context.category_label
-            defaultData = context.total_expense
+            labels = context.category_label;
+            defaultData = context.total_expense;
             var ctx = document.getElementById('myChart');
             var myChart = new Chart(ctx, {
                 type: 'doughnut',

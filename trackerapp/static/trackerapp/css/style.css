@@ -18,13 +18,13 @@ body {
   }
 
 
-  .brand-logo {
-    font-family: Merienda, sans-serif;    
-    margin-left: 10px;
-  }
-
-
 /* -----------------GENERAL STYLING*/
+
+.brand-logo {
+  font-family: Merienda, sans-serif;    
+  margin-left: 10px;
+}
+
 
 .transaction-container {  
   display: flex;  

@@ -30,7 +30,12 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["kai00-expense-tracker.herokuapp.com", "localhost", "8000-ekai00-djangoblog-z6jyoxmi2xb.ws-eu98.gitpod.io", "127.0.0.1"]
+ALLOWED_HOSTS = [
+    "kai00-expense-tracker.herokuapp.com",
+    "localhost",
+    "8000-ekai00-djangoblog-z6jyoxmi2xb.ws-eu98.gitpod.io",
+    "127.0.0.1"
+]
 
 
 # Application definition
@@ -47,7 +52,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'materializecssform',    
+    'materializecssform',
 ]
 
 SITE_ID = 1
