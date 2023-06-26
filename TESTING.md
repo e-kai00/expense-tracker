@@ -23,10 +23,10 @@
 - [JShint](https://jshint.com/)
   - script.js [file](https://github.com/e-kai00/expense-tracker/blob/main/trackerapp/static/trackerapp/js/script.js):
       - __Metrics__:
-        - There are 3 functions in this file.
-Function with the largest signature take 3 arguments, while the median is 0.
-Largest function has 16 statements in it, while the median is 3.
-The most complex function has a cyclomatic complexity value of 6 while the median is 1.
+        - There are 4 functions in this file.
+          Function with the largest signature take 3 arguments, while the median is 0.
+          Largest function has 16 statements in it, while the median is 3.5.
+          The most complex function has a cyclomatic complexity value of 6 while the median is 1.
       - __Undefined variable__:
         - $ (used for jQuery)
       - I received 15 warnings attributed to the Chart.js plagin:
