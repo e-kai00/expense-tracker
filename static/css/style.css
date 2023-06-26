@@ -140,3 +140,10 @@ body {
 }
 
 
+/* -----------------media queries */
+@media screen and (max-width: 600px) {
+  nav .brand-logo {
+    font-size: 1.4rem;
+  }
+}
+
