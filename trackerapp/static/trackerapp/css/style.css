@@ -120,3 +120,23 @@ body {
   font-style: oblique;  
   color: #666666
 }
+
+/* -----------------FLASH MESSAGE */
+.messages {
+  list-style: none;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+#flash-message {
+  margin-bottom: 5px;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.success {
+  background-color: #e0f2f1;
+  color: #004d40;
+}
+
+
