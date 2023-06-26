@@ -11,6 +11,10 @@ $(document).ready(function() {
         
     initMaterialize();
 
+
+  setTimeout(function() {
+    $('#flash-message').fadeOut();
+  }, 3500);
   
   // Get current year for the Cpyright
   $('#copyright').text(new Date().getFullYear());    

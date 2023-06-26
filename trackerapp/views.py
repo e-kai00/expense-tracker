@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Q, F, Sum
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from .models import Transactions, ExpenseCategory
@@ -244,6 +245,9 @@ def categories_edit(request, category_id):
         form.request = request
         if form.is_valid():
             form.save()
+            messages.success(
+                request, f"Category has been updated"
+            )
             return redirect('categories')
     else:
         form = EditCategoryForm(instance=category)

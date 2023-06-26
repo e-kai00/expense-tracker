@@ -7,12 +7,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Expense Tracker | Manage your finances and gain insights into your spending habits.">
+    <meta name="description"
+        content="Expense Tracker | Manage your finances and gain insights into your spending habits.">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+        type="text/css">
     {% block head %}{% endblock %}
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'trackerapp/css/style.css' %}" type="text/css">    
+    <link rel="stylesheet" href="{% static 'trackerapp/css/style.css' %}" type="text/css">
 
     <title>Expense Tracker</title>
 </head>
@@ -26,11 +28,11 @@
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="{% url 'index' %}" title="Home"><i class="material-icons">home</i></a></li>
-                    <li><a href="{% url 'categories' %}"><i class="material-icons" title='Categories'>style</i></a></li>                    
-                                        
+                    <li><a href="{% url 'categories' %}"><i class="material-icons" title='Categories'>style</i></a></li>
+
                     {% if user.is_authenticated %}
-                    <li><span><em>Welcome, {{ user.username }}</em></span></li>               
-                    <li class="nav-item">                        
+                    <li><span><em>Welcome, {{ user.username }}</em></span></li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
                     </li>
                     {% else %}
@@ -40,8 +42,8 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_login' %}">Login</a>
                     </li>
-                    {% endif %}                    
-                </ul>               
+                    {% endif %}
+                </ul>
             </div>
         </nav>
 
@@ -49,8 +51,8 @@
         <ul class="sidenav" id="mobile-demo">
             <li><a href="{% url 'index' %}">Home</a></li>
             <li><a href="{% url 'categories' %}">Categories</a></li>
-            {% if user.is_authenticated %}                                 
-            <li class="nav-item">                        
+            {% if user.is_authenticated %}
+            <li class="nav-item">
                 <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
             </li>
             {% else %}
@@ -60,11 +62,19 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'account_login' %}">Login</a>
             </li>
-            {% endif %}            
+            {% endif %}
         </ul>
     </header>
 
     <main class="container">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li id="flash-message" {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endfor %}
+        </ul>
+        {% endif %}
+
         {% block content %}
         {% endblock %}
     </main>
@@ -72,10 +82,10 @@
     <footer class="page-footer teal accent-4">
         <div class="footer-copyright">
             <div class="container">
-                <p class="center-align">© Copyright | All rights reserved <span id='copyright'></span></p>                
-            </div>           
+                <p class="center-align">© Copyright | All rights reserved <span id='copyright'></span></p>
+            </div>
         </div>
-    </footer>   
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.3.0/chart.umd.min.js"></script>
@@ -85,4 +95,5 @@
     {% block scripts %}
     {% endblock %}
 </body>
+
 </html>
