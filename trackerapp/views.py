@@ -213,6 +213,9 @@ def categories_add(request):
             category = form.save(commit=False)
             category.user = user
             category.save()
+            messages.success(
+                request, f"Category has been created."
+            )
             # retrieve url of previous page and redirect to it
             previous_page = request.POST.get('previous_page')
             return redirect(previous_page)
@@ -246,7 +249,7 @@ def categories_edit(request, category_id):
         if form.is_valid():
             form.save()
             messages.success(
-                request, f"Category has been updated"
+                request, f"Category has been updated."
             )
             return redirect('categories')
     else:
@@ -270,6 +273,9 @@ def categories_delete(request, category_id):
         user=request.user
     )
     category.delete()
+    messages.success(
+        request, f"Category successfully deleted."
+    )
     return redirect('categories')
 
 
