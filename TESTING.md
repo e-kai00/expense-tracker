@@ -1,6 +1,35 @@
 ### Responsiveness
 
-### Browser 
+| Device| Screenshort|
+|:-------:|:-------:|
+|Desktop|![Desktop](/readme-img/testing/responsive-desktop.png)|
+|Tablet |![Tablet](/readme-img/testing/responsive-tablet.png)|
+|Mobile |![Mobile](/readme-img/testing/responsive-mobile.png)|
+
+### Browser Compatibility
+| Browser | Screenshot | Notes|
+|:-------:|:-------:|:-------:|
+| Chrome  | ![Chrome](/readme-img/testing/browser-chrome.png) |
+| Mozilla Firefox|![Firefox](/readme-img/testing/browser-firefox.png)  |
+| Microsoft Edge|![Edge](/readme-img/testing/browser-edge.png) |
+
+
+### Bugs
+
+| Description | Action | Status |
+|:-----|:------|:------:|
+|Form fields from models with choices are not displayed | Initialize Materialize select element| Closed|
+|Delete Confirmation modal does not delete category| Pass `category.id` to the modal and its trigger; set modal inside 'for-loop'| Closed|
+|Unable to edit categories, that are predifined by models|Remove choices option from the model|Closed|
+|User sees categories created by other users|Filters the queryset of the 'expense_category' field in the form to include only the categories of the current user| Closed|
+|On adding and creating category with exiting name, ValidationError is not thrown| Using `django-materializecss-form` resolved the issue| Closed|
+|Add category, when ValidationError is thrown and new valid name is entered, is not redirecting to previous page|This issue still needs to be resolved| Open|
+|Static files are not served at deployed app version| Move `static` folder to root directory, set up settings.py, change links for static files in templates, add cloudinary library| Closed|
+
+
+### Lighthouse
+![Lighthouse test](/readme-img/testing/lighthouse.png)
+
 
 ### Validators
 
@@ -61,10 +90,58 @@ Cyclomatic complexity number for this function is 1.
 
 <br>
 
-### Compatibility
+### User Stories 
 
-### Known Issues
+### Features
 
-### Automated Testing
+| Page | User action | Expected result | Status|
+|:-----|:------------|:----------------|:-----:|
+|**User Registration and Authentication**| | |
+| Sign up | Enter username | Field will only accept letters, numbers, and @/./+/-/_ characters| pass|
+| | Enter valid email| Field will only accept email address format | pass|
+| | Enter valid password (x2)| Field will only accept password format: min. 8 characters|pass|
+| | Click Sing in link | Redirect to sign-in page|pass|
+| | Click Sign up button| Register user and redirect to home page|pass|
+|Sign in| Enter valid username| Filed only accept valid username|pass|
+| | Enter valid password| Field will only accept existing password format|pass|
+| | Click Sign up link| Redirect to sign-up page|pass|
+| | Click Sign in button| Redirect to home page|pass|
+|Sign out| Click Sign out link|Redirect to confirmation page|pass|
+| | Click Sighn out button| Sign out and redirect to Log-in page|pass|
+|**Transaction Creation**| | |
+|Add expense|Click expense "-" button|Promt to enter amount, category and note. New expense created| pass|
+| | Click 'Add new category' link| Redirect to 'Add new category' page|pass|
+|Add income| Click income "+" button|Promt to enter amount, notes. New income created|pass|
+|**Reports**| | |
+|Visual expense chart| Add expense|Update distribution of expenses across different categories|pass|
+|**Transaction Filtering**| | |
+|Filter transactions| Click Balance button| Redirect to detailed transactions list|pass|
+| | Chose month from dropdown and press filter icon|Display transactions for selected month|pass|
+|**Expense Category Management**| | |
+|List of categories|Click Category icon in navbar|Redirect to expense category page|pass|
+|Create category |Click 'Add new' button| Promt to enter new category name. Create new category. Redirect to list of categories|pass|
+|Edit category|Click Edit icon|Promt to update category name. Update. Redirect to list of categories|pass|
+|Delete category|Click Delete icon|Promt to confirm delete action. Delete. Redirect to list of categories|pass|
+|**Navbar**| | |
+|| Click Logo|Redirect to home page|pass|
+| |Click Home icon|Redirect to home page|pass|
+| |Click Category icon|Redirect to categories page|pass|
+|**404 page** | |
+| | Click 'Go to home' button|Redirect to homepage|pass|
+|**Confirmations**| | |
+| | On Registration| Flash message|pass|
+| | On Login| Flash message|pass|
+| | On Logout| Flash message|pass|
+| | On category created|Flash message|pass|
+| | On category updated|Flash message|pass|
+| | On category deleted| Delete confirmation modal|pass|
+| | |Flash message|pass|
+|**Error messages**| | |
+|Enter existing category name| On category created| Message: "This category is already exists. Enter another category name."|pass|
+| | On category updated|Message: "This category is already exists. Enter another category name."|pass|
+
+
+
+
 
 Back to [README.md](https://github.com/e-kai00/expense-tracker/blob/main/README.md)
