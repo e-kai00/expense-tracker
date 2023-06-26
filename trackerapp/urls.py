@@ -10,8 +10,6 @@ urlpatterns = [
     path('categories', views.categories, name='categories'),
     path('categories_add', views.categories_add, name='categories_add'),
     path('categories/edit/<int:category_id>/', views.categories_edit, name='categories_edit'),
-    path('categories/delete/<int:category_id>/', views.categories_delete, name='categories_delete'),
-    # path('accounts', views.accounts, name='accounts'),
-    # path('accounts_add', views.accounts_add, name='accounts_add'),
+    path('categories/delete/<int:category_id>/', views.categories_delete, name='categories_delete'),    
     path('api-data/', views.expenses_by_category, name='api-data'),    
 ]
