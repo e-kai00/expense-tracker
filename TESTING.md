@@ -93,9 +93,27 @@ Cyclomatic complexity number for this function is 1.
 ### User Stories 
 
 "*As a User I want to be able to___________________*"
+- [x] - *successfully implemented*
+- [ ] - *yet to be implemented*
+
+<br>
+
 - [x] register my account, so that my personal finance data is secured
-- [] log in
-- [] log out
+- [x] log in
+- [x] log out
+- [x] intuitively navigate through different sections and features of the application
+- [x] access the app on various devices (mobiles, tablets, desktop)
+- [x] add transactions to keep track of my financial activities
+- [x] see my current balance to stay informed about my financial status
+- [x] see all my transactions for the current period to review my financial activities 
+- [x] filter my transactions by month
+- [x] add new expense categories
+- [x] update existing expense categories
+- [x] delete expense categories
+- [x] see chart/ diagram so that I better understand my spending habits
+- [ ] update or delete a transaction
+- [ ] create and manage accounts (e.g. Cash, Cards, Savings)
+
 
 ### Features
 
