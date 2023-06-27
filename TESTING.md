@@ -92,6 +92,11 @@ Cyclomatic complexity number for this function is 1.
 
 ### User Stories 
 
+"*As a User I want to be able to___________________*"
+- [x] register my account, so that my personal finance data is secured
+- [] log in
+- [] log out
+
 ### Features
 
 | Page | User action | Expected result | Status|
