@@ -1,5 +1,36 @@
 ## UX Design
 
+My intention was to keep the design clean and minimalist, prioritizing simplicity and ease of use of the app. The interface features a straightforward layout with intuitive navigation, allowing users to quickly manage their expenses. The design elements are kept minimal to avoid clutter and distractions. 
+
+### Color Scheme
+The color scheme for this project is designed to be simple and clean, using two primary colors from the [Materialize](https://materializecss.com/color.html) framework and shades of grey for fonts. 
+
+![Palette](/readme-img/design/palette.png)
+
+The primary colors used are:
+- Teal Accent-4 (#00bfa5): this vibrant teal color adds a refreshing and energetic touch to the project,
+- Red Lighten-1 (#ef5350): the red color provides an eye-catching accent and mainly used for buttons.
+
+In addition to the primary colors, shades of grey are used for fonts to ensure readability. 
+In overall, I aimed to create a visually appealing, harmonious and user-friendly interface.
+
+
+### Icons
+
+[Materialize](https://materializecss.com/icons.html) and [FontAwesome](https://fontawesome.com/)
+- To enhancing the visual appeal and usability of the project I used icons from two popular icon libraries: Materialize and FontAwesome.
+
+### Typography
+
+Two [Google Fonts](https://fonts.google.com/) were used for the app:
+- Merienda - used for logo and page headings
+- Quicksand - used as default
+
+### Wireframes
+
+I did initial sketches with paper and pencil and then created more detailed wireframes for desktop and mobiles using Balsamiq. You can find all of the wireframes for this project [here](https://github.com/e-kai00/expense-tracker/tree/main/readme-img/design/wireframes). 
+
+
 
 
 ### Agile Development
