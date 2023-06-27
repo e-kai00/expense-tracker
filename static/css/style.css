@@ -57,6 +57,10 @@ body {
   font-family: Merienda, sans-serif;
 }
 
+.footer-link {
+  font-size: 13px;
+  font-style: oblique; 
+}
 
 /* -----------------MAIN PAGE */
 
