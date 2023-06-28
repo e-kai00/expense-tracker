@@ -1,3 +1,14 @@
+## Table of Contents
+
+- [Responsiveness](#responsiveness)
+- [Browser Compatibility](#browser-compatibility)
+- [Bugs](#bugs)
+- [Lighthouse](#lighthouse)
+- [Validators](#validators)
+- [User Stories](#user-stories)
+- [Features](#features) <br><br>
+
+
 ### Responsiveness
 
 | Device| Screenshort|
@@ -18,13 +29,14 @@
 
 | Description | Action | Status |
 |:-----|:------|:------:|
-|Form fields from models with choices are not displayed | Initialize Materialize select element| Closed|
-|Delete Confirmation modal does not delete category| Pass `category.id` to the modal and its trigger; set modal inside 'for-loop'| Closed|
-|Unable to edit categories, that are predifined by models|Remove choices option from the model|Closed|
+|The display of form fields derived from models with predefined choices is not visible| Initialize Materialize select element| Closed|
+|The Delete Confirmation modal fails to delete the category| Pass `category.id` to the modal and its trigger; set modal inside 'for-loop'| Closed|
+|Unable to edit categories, that are predefined by models|Remove choices option from the model|Closed|
 |User sees categories created by other users|Filters the queryset of the 'expense_category' field in the form to include only the categories of the current user| Closed|
-|On adding and creating category with exiting name, ValidationError is not thrown| Using `django-materializecss-form` resolved the issue| Closed|
-|Add category, when ValidationError is thrown and new valid name is entered, is not redirecting to previous page|This issue still needs to be resolved| Open|
+|When attempting to add or create a category with a duplicated name, the application does not throw a ValidationError| Using `django-materializecss-form` resolved the issue| Closed|
+|After receiving a ValidationError while attempting to add a duplicated category, entering a new valid name does not redirect the user to the previous page|This issue still needs to be resolved| Open|
 |Static files are not served at deployed app version| Move `static` folder to root directory, set up settings.py, change links for static files in templates, add cloudinary library| Closed|
+|Login page: checkbox for 'Remember me' does not display'|This issue still needs to be resolved|Open|
 
 
 ### Lighthouse
@@ -54,7 +66,7 @@
 
 **JavaScript**
 - [JShint](https://jshint.com/)
-  - script.js [file](https://github.com/e-kai00/expense-tracker/blob/main/trackerapp/static/trackerapp/js/script.js):
+  - script.js [file](https://github.com/e-kai00/expense-tracker/blob/main/static/js/script.js):
       - __Metrics__:
         - There are 4 functions in this file.
           Function with the largest signature take 3 arguments, while the median is 0.
@@ -68,7 +80,7 @@
         - 'destructuring binding' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz). (x3)
         - 'let' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz). (x2)
 Unexpected use of '|='.
-  - Chart instantiation in [index.html](https://github.com/e-kai00/expense-tracker/blob/main/trackerapp/templates/trackerapp/index.html):
+  - Chart instantiation in [index.html](https://github.com/e-kai00/expense-tracker/blob/main/templates/trackerapp/index.html):
     - __Metrics__:
       - There is only one function in this file.
 It takes one argument.
@@ -86,17 +98,15 @@ Cyclomatic complexity number for this function is 1.
 - [CI Python Linter](https://pep8ci.herokuapp.com/#)
   - All .py files are compliant with the guidelines outlined in PEP8, exept one:
     - built-in Django [settings.py ](https://github.com/e-kai00/expense-tracker/blob/main/tracker/settings.py)
-    - E501 line too long (91 > 79 characters) - `AUTH_PASSWORD_VALIDATORS` (x4)
+    - E501 line too long (91 > 79 characters) - `AUTH_PASSWORD_VALIDATORS` (x4) <br><br>
 
-<br>
+
 
 ### User Stories 
 
 "*As a User I want to be able to___________________*"
 - [x] - *successfully implemented*
-- [ ] - *yet to be implemented*
-
-<br>
+- [ ] - *yet to be implemented* <br><br>
 
 - [x] register my account, so that my personal finance data is secured
 - [x] log in
@@ -130,11 +140,11 @@ Cyclomatic complexity number for this function is 1.
 | | Click Sign up link| Redirect to sign-up page|pass|
 | | Click Sign in button| Redirect to home page|pass|
 |Sign out| Click Sign out link|Redirect to confirmation page|pass|
-| | Click Sighn out button| Sign out and redirect to Log-in page|pass|
+| | Click Sign out button| Sign out and redirect to Log-in page|pass|
 |**Transaction Creation**| | |
-|Add expense|Click expense "-" button|Promt to enter amount, category and note. New expense created| pass|
+|Add expense|Click expense "-" button|Prompt to enter amount, category and note. New expense created| pass|
 | | Click 'Add new category' link| Redirect to 'Add new category' page|pass|
-|Add income| Click income "+" button|Promt to enter amount, notes. New income created|pass|
+|Add income| Click income "+" button|Prompt to enter amount, notes. New income created|pass|
 |**Reports**| | |
 |Visual expense chart| Add expense|Update distribution of expenses across different categories|pass|
 |**Transaction Filtering**| | |
@@ -142,9 +152,9 @@ Cyclomatic complexity number for this function is 1.
 | | Chose month from dropdown and press filter icon|Display transactions for selected month|pass|
 |**Expense Category Management**| | |
 |List of categories|Click Category icon in navbar|Redirect to expense category page|pass|
-|Create category |Click 'Add new' button| Promt to enter new category name. Create new category. Redirect to list of categories|pass|
-|Edit category|Click Edit icon|Promt to update category name. Update. Redirect to list of categories|pass|
-|Delete category|Click Delete icon|Promt to confirm delete action. Delete. Redirect to list of categories|pass|
+|Create category |Click 'Add new' button| Prompt  to enter new category name. Create new category. Redirect to list of categories|pass|
+|Edit category|Click Edit icon|Prompt  to update category name. Update. Redirect to list of categories|pass|
+|Delete category|Click Delete icon|Prompt to confirm delete action. Delete. Redirect to list of categories|pass|
 |**Navbar**| | |
 || Click Logo|Redirect to home page|pass|
 | |Click Home icon|Redirect to home page|pass|

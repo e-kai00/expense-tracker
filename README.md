@@ -1,5 +1,11 @@
+## Expense Tracker app
+
 ![Expense tracker app](/readme-img/design/main-screen.png)
+
 Effortlessly manage your expenses with Expense Tracker. Designed to be simple and intuitive, it provides a convenient solution to stay on top of your finances. With a clean and minimalist interface, navigating through the app is easy and straightforward. Record, categorize your expenses and gain insights into your spending habits. 
+
+The live link to the website - [Expense Tracker](https://kai00-expense-tracker.herokuapp.com/accounts/login/?next=/) <br><br>
+
 
 ## UX Design
 
@@ -21,7 +27,7 @@ In overall, I aimed to create a visually appealing, harmonious and user-friendly
 ### Icons
 
 [Materialize](https://materializecss.com/icons.html) and [FontAwesome](https://fontawesome.com/)
-- To enhancing the visual appeal and usability of the project I used icons from two popular icon libraries: Materialize and FontAwesome.
+- To enhance the visual appeal and usability of the project I used icons from two popular icon libraries: Materialize and FontAwesome.
 
 ### Typography
 
@@ -31,9 +37,7 @@ Two [Google Fonts](https://fonts.google.com/) were used for the app:
 
 ### Wireframes
 
-I did initial sketches with paper and pencil and then created more detailed wireframes for desktop and mobiles using Balsamiq. You can find all of the wireframes for this project [here](https://github.com/e-kai00/expense-tracker/tree/main/readme-img/design/wireframes). 
-
-
+I did initial sketches with paper and pencil and then created more detailed wireframes for desktop and mobiles using [Balsamiq](https://balsamiq.com/). You can find all of the wireframes for this project in [design](https://github.com/e-kai00/expense-tracker/tree/main/readme-img/design/wireframes) folder. <br><br>
 
 
 ### Agile Development
@@ -56,9 +60,7 @@ I used the Agile methodology for the management of this project.
 
 ![moscow method](/readme-img/agile/agile1.png)
 
-*(Remark: this was my first encounter with Agile and MoSCoW methodologies. I tried to implement them as taught during the CI course, dividing tasks into Must Have (up to 60%), Should Have, and Could Have (both up to 20%). However, due to my limited experience, I slightly overestimated the project scope. As a result, I had to make adjustments along the way, and most of my tasks ended up falling into the Must Have category. I'll keep that in mind for my future projects.)*
-
-<br>
+*(Remark: this was my first encounter with Agile and MoSCoW methodologies. I tried to implement them as taught during the CI course, dividing tasks into Must Have (up to 60%), Should Have, and Could Have (both up to 20%). However, due to my limited experience, I slightly overestimated the project scope. As a result, I had to make adjustments along the way, and most of my tasks ended up falling into the Must Have category. I'll keep that in mind for my future projects.)* <br><br>
 
 
 ## Features
@@ -66,58 +68,58 @@ I used the Agile methodology for the management of this project.
 ### Existing Features
 
 **Register Account**
-- Allows users to create a new account by providing necessary information.
+- Allows users to create a new account by providing necessary information. 
 
 **Login and logout**
 - Enables users to log in to access their account and securely log out when finished.
 
-![Login](/readme-img/features/feat.png)
+![Login](/readme-img/features/feat.png) <br><br>
 
 **Ceate transactions**
 - Allows users to record and save their financial transactions, such as expenses or income. When adding an expense, users have the option to include a new category and seamlessly continue the process.
 
 ![Transactions](/readme-img/features/trans.png)
-![Add transactions](/readme-img/features/transactions.png)
+![Add transactions](/readme-img/features/transactions.png) <br><br>
 
 **See summary for the current month**
 - Provides a summarized overview of the user's financial activity for the current month.
 
-![Month transactions](/readme-img/features/month-summary.png)
+![Month transactions](/readme-img/features/month-summary.png) <br><br>
 
 **Detailed transactions**
 - Displays a detailed view of individual transactions, including date, amount, category, and any additional details.
 
-![Detailed transactions](/readme-img/features/detailed-transactions.png)
+![Detailed transactions](/readme-img/features/detailed-transactions.png) <br><br>
 
 **Filter transactions by moth**
 - Allows users to filter and view transactions based on specific months.
 
-![Filters](/readme-img/features/filter1.png)
+![Filters](/readme-img/features/filter1.png) <br><br>
 
 **List of categories**
-- Shows a list of categories (have to be created 1st) that can be associated with transactions for easy organization.
+- Shows a list of categories (initially empty, you have to create the categories first) that can be associated with transactions for easy organization.
 
-![Category list](/readme-img/features/category-list.png)
+![Category list](/readme-img/features/category-list.png) <br><br>
 
 **Create new category**
 - Enables users to create categories to classify their transactions according to their specific needs.
 
-![Create category](/readme-img/features/category-add.png)
+![Create category](/readme-img/features/category-add.png) <br><br>
 
 **Edit existing category**
 - Provides the option to update an existing category name.
 
-![Edit category](/readme-img/features/category-edit.png)
+![Edit category](/readme-img/features/category-edit.png) <br><br>
 
 **Delete category**
 -  Allows users to remove unwanted categories from their list.
 
-![Delete category](/readme-img/features/category-delete.png)
+![Delete category](/readme-img/features/category-delete.png) <br><br>
 
 **Error 404**
 - Displays a customized error page (404 Not Found) when a requested page or resource cannot be found.
 
-![404 page](/readme-img/features/404-page.png)
+![404 page](/readme-img/features/404-page.png) <br><br>
 
 
 ### Features to Implement
@@ -132,11 +134,7 @@ I used the Agile methodology for the management of this project.
 - Provide the ability to create income categories, offering the same functionality as expense categories.
 
 **Create and manage accounts (e.g., Cash, Cards, Savings)**
-- Allow users to create and switch between different accounts. I initially planned to include this feature right from the start, but due to my limited experience and time constraints, I had to postpone it. For now I left the `AccountCategory` model unused in my app and plan to return to implement it.
-
-
-
-<br>
+- Allow users to create and switch between different accounts. I initially planned to include this feature right from the start, but due to my limited experience and time constraints, I had to postpone it. For now I left the `AccountCategory` model unused in my app and plan to return to implement it. <br><br>
 
 ## Technologies
 
@@ -161,15 +159,10 @@ I used the Agile methodology for the management of this project.
 - [Heroku](https://www.heroku.com/) - used as app remote hosting platform
 - [Python](https://www.python.org/) - used as backend programming language
 - [ElephantSQL](https://www.elephantsql.com/) - remote PostgreSQL database
-- [Cloudinary](https://cloudinary.com/) - used for static files as remote storage
-
-
-<br>
+- [Cloudinary](https://cloudinary.com/) - used for static files as remote storage <br><br>
 
 ## Testing
-For an overview of all the testing conducted, please refer to the [TESTING.md](https://github.com/e-kai00/expense-tracker/blob/main/TESTING.md) file.
-
-<br>
+For an overview of all the testing conducted, please refer to the [TESTING.md](https://github.com/e-kai00/expense-tracker/blob/main/TESTING.md) file. <br><br>
 
 ## Deployment
 
@@ -241,9 +234,8 @@ For proper deployment and execution of the application, Heroku needs *requiremen
 - Navigate to **Deploy** tab
 - Connect your GitHub account and choose needed repositary
 - Scroll down and click **Deploy Branch** (this project deployed from main branch)
-- Once succeesfully deployed, click **Open app** at the right top coner of the page
+- Once succeesfully deployed, click **Open app** at the right top coner of the page <br><br>
 
-<br>
 
 ## Credits
 ### Code
