@@ -188,6 +188,10 @@ For an overview of all the testing conducted, please refer to the [TESTING.md](h
 - create superuser to access the Django Admin Panel:
   - `python3 manage.py createsuperuser`
 
+After successfully completing the database migrations and setting up the superuser, the relational schema will be configured:
+![relational schema](/readme-img/design/model.png)
+*(Note: the 'Account' model is currently not in use, I explained reasons for this in [Features to Implement](#features-to-implement) section)*
+
 **ElephantSQL Database**
 
 To sign up with ElephantSQL and create a new database, you follow these steps:
