@@ -1,3 +1,6 @@
+![Expense tracker app](/readme-img/design/main-screen.png)
+Effortlessly manage your expenses with Expense Tracker. Designed to be simple and intuitive, it provides a convenient solution to stay on top of your finances. With a clean and minimalist interface, navigating through the app is easy and straightforward. Record, categorize your expenses and gain insights into your spending habits. 
+
 ## UX Design
 
 My intention was to keep the design clean and minimalist, prioritizing simplicity and ease of use of the app. The interface features a straightforward layout with intuitive navigation, allowing users to quickly manage their expenses. The design elements are kept minimal to avoid clutter and distractions. 
@@ -240,14 +243,26 @@ For proper deployment and execution of the application, Heroku needs *requiremen
 - Scroll down and click **Deploy Branch** (this project deployed from main branch)
 - Once succeesfully deployed, click **Open app** at the right top coner of the page
 
-
-
 <br>
 
 ## Credits
-
-### Content
-### Media
 ### Code
+- Blog: [Getting Started with Chart.js in Django](https://www.section.io/engineering-education/integrating-chart-js-in-django/)
+- YouTube: [How To Display Graphs Using Chart JS In Django](https://www.youtube.com/watch?v=_SipEeFe-cw)
+- Blog: [How to make a nice graph using Django and Chart.js](https://pybit.es/articles/how-to-make-a-nice-graph-using-django-and-chart-js/)
+- YouTube: [Django + Chart.js // Learn to intergrate Chart.js with Django](https://www.youtube.com/watch?v=B4Vmm3yZPgc)
+- Stack Overflow: [How to redirect to previous page in Django after POST request](https://stackoverflow.com/questions/35796195/how-to-redirect-to-previous-page-in-django-after-post-request) 
+- YouTube: [Django To Do List App With User Registration & Login](https://www.youtube.com/watch?v=llbtoQTt4qw)
+- Stack Overflow: [Unique categories per user](https://stackoverflow.com/questions/70469977/unique-true-django-models-unique-for-each-user-not-unique-for-all-data-s)
+- Stack Overflow: [ override `__init__` method ](https://stackoverflow.com/questions/5031711/python-cleanest-way-to-override-init-where-an-optional-kwarg-must-be-used)
+- Stack Overflow: [Django override `__init__` form method using ModelForm](https://stackoverflow.com/questions/72450576/django-override-init-form-method-using-modelform)
+- Stack Overflow: [Django, creating a custom 500/404 error page](https://stackoverflow.com/questions/17662928/django-creating-a-custom-500-404-error-page)
+
+
 ### Acknowledgments
+
+ My sincere thanks to: 
+- Samantha Dartnall, my Code Institute mentor, for her support and precious guidance throughout the course.
+- [TravelTimN](https://github.com/TravelTimN), Code Institute instructor. I found Tim's repository to be an excellent resource, providing practical examples and helping me better understand some key concepts in practice.
+  
 
