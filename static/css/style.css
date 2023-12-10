@@ -3,18 +3,21 @@
 /* font-family: 'Merienda', cursive;
 font-family: 'Quicksand', sans-serif; */
 
-
+html {
+  height: 100%;
+}
 /* Materialize sticky footer */
 body {
     display: flex;
-    min-height: 100vh;
     flex-direction: column;
-    font-family: Quicksand, sans-serif;
+    min-height: 100%;
+    /* font-family: Quicksand, sans-serif; */
   }
 
 
   main {
     flex: 1 0 auto;
+    min-height: 400px;
   }
 
 
@@ -123,6 +126,15 @@ body {
   font-size: smaller;
   font-style: oblique;  
   color: #666666
+}
+
+/* -----------------FOOTER */
+
+.copyright-text {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  font-size: .8rem;
+  font-weight: 600;
 }
 
 /* -----------------FLASH MESSAGE */
