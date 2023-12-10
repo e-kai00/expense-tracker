@@ -1,0 +1,94 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+        type="text/css">
+    <link rel="stylesheet" href="{% static 'css/landing-page.css' %}" type="text/css">
+    <title>Expense Tracker</title>
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="">
+        <div class="nav-wrapper">
+            <a href="{% url 'index' %}" class="brand-logo"><i class="fas fa-calculator fa-lg"></i></i>Expense
+                Tracker</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="#" title="Home">About</a></li>
+
+                {% if user.is_authenticated %}
+                <li><span><em>Welcome, {{ user.username }}</em></span></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account_signup'%}">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <!-- mobile collapse button -->
+    <ul class="sidenav" id="mobile-demo">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'categories' %}">Categories</a></li>
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'account_signup'%}">Sign Up</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+        </li>
+        {% endif %}
+    </ul>
+
+    <!-- main -->
+    <main class="container">
+        <div class="row">
+
+            <!-- text -->
+            <div class="col s12 m6">
+                <p class="main-text">
+                    Your all-in-one solution for managing your finances effortlessly. 
+                </p>
+                <p class="secondary-text">
+                    Gain insights into your spending, track expenses seamlessly, and achieve financial freedom like never before.
+                    Easy Tracking: Effortlessly monitor your daily expenses and income in one central hub.
+                    Smart Budgeting: Set and achieve your financial goals with our intuitive budgeting tools.
+                    Insightful Reports: Analyze your spending patterns and make informed financial decisions.
+                    Secure & Convenient: Your financial data is securely encrypted, ensuring peace of mind.
+                </p>
+                <button>Sign Up</button>
+            </div>
+
+            <!-- image -->
+            <div class="col s12 m6 img-container">
+                <img class="landing-image" src="{% static 'img/lp-img.png' %}" width="400" height="250">
+                <div class="overlay"></div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://kit.fontawesome.com/624b5d3773.js" crossorigin="anonymous"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+
+</html>

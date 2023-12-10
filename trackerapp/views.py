@@ -14,6 +14,11 @@ import datetime
 
 
 # --------------HOME PAGE
+def landing_page(request):
+    """ Render the landing page """
+
+    return render(request, 'trackerapp/home.html')
+
 
 @login_required
 def index(request):

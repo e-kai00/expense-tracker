@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Merienda&family=Quicksand:wght@400;600&display=swap');
+@import "variables";
+@import "mixins";
+
+
+body {
+    background-color: $body-background-color;
+    color: $primary-text-color;
+    font-size: 1rem;    
+    font-family: $text-font;
+}
+
+nav {
+    background-color: $body-background-color;
+
+    .nav-wrapper {
+        padding-left: 1.2em;
+        padding-right: 1.2em;
+    }
+    
+    i {
+        color: $primary-color-dark;
+    }
+
+    .brand-logo {        
+        color: $primary-text-color;
+        font-weight: 600;
+    }
+
+     ul a {
+        color: $primary-text-color;
+        font-weight: 600;
+    }
+}
+
+.container {
+    padding-block: 8em;
+
+    .row {
+        display: flex;
+        justify-content: center;
+        align-items: center;       
+    
+
+        .img-container {
+            position: relative;
+
+            img {
+                display: block;
+            }
+
+            .overlay {
+                position: absolute;
+                inset: 0;            
+                opacity: .2;
+                background-color: $primary-color;
+            }
+        }
+
+        .main-text {
+            font-weight: 600;
+            font-size: 2rem;
+            color: $primary-color-dark;
+        }
+
+        button {
+            @include buttons;
+            margin-block: 1.5em;
+        }
+    }
+
+    
+}
