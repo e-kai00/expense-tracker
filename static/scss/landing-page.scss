@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Merienda&family=Quicksand:wght@400;600&display=swap');
+@import "variables";
+@import "mixins";
+
+
+body {
+    background-color: $body-background-color;
+    color: $primary-text-color;
+    font-size: 1rem;    
+    font-family: $text-font;
+}
+
+nav {
+    background-color: $body-background-color;
+
+    .nav-wrapper {
+        padding-left: 1.2em;
+        padding-right: 1.2em;
+    }
+     
+    i {
+        color: $primary-color-dark;
+    } 
+
+    // .logo-pic {
+    //     text-shadow: 1px 1px 2px $primary-color;
+    // }
+
+    .brand-logo {        
+        color: $primary-text-color;
+        font-weight: 600;        
+        
+        .logo-pic {
+            margin-right: .4em;
+        }
+
+        @media screen and (max-width: 480px) {
+            font-size: 1.5rem;	
+        }
+    }
+    
+
+     ul a {
+        color: $primary-text-color;
+        font-weight: 600;
+    }
+}
+
+.container {
+    padding-block: 8em;
+
+    @media screen and (max-width: 600px) {
+    padding-block: 6em;
+
+    }
+
+    .row {
+
+        @media screen and (min-width: 1200px) {
+            display: flex;
+            justify-content: center;
+            align-items: center;                               
+        }
+    
+
+        .img-container {
+            position: relative;
+            
+            .landing-image {
+                display: block;
+                border-right: 2px solid $primary-color-dark;
+                border-top: 2px solid $primary-color-dark;
+                border-top-right-radius: 2rem;
+            }
+
+            @media screen and (max-width: 600px) {
+                display: none;
+            }
+
+            // .overlay {
+            //     position: absolute;
+            //     inset: 0;            
+            //     opacity: .2;
+            //     background-color: $primary-color;  
+            // }
+        }
+
+        .main-text {
+            font-weight: 600;
+            font-size: 2rem;
+            color: $primary-color-dark;
+        }
+
+        .secondary-text {
+            margin-bottom: 2rem;
+        }
+
+        .landing-button {
+            @include buttons;
+        }
+    }
+
+    
+}

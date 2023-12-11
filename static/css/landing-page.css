@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Merienda&family=Quicksand:wght@400;600&display=swap");
+body {
+  background-color: #ffffff;
+  color: #262626;
+  font-size: 1rem;
+  font-family: Quicksand, sans-serif;
+}
+
+nav {
+  background-color: #ffffff;
+}
+nav .nav-wrapper {
+  padding-left: 1.2em;
+  padding-right: 1.2em;
+}
+nav i {
+  color: #26a69a;
+}
+nav .brand-logo {
+  color: #262626;
+  font-weight: 600;
+}
+nav .brand-logo .logo-pic {
+  margin-right: 0.4em;
+}
+@media screen and (max-width: 480px) {
+  nav .brand-logo {
+    font-size: 1.5rem;
+  }
+}
+nav ul a {
+  color: #262626;
+  font-weight: 600;
+}
+
+.container {
+  padding-block: 8em;
+}
+@media screen and (max-width: 600px) {
+  .container {
+    padding-block: 6em;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .container .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.container .row .img-container {
+  position: relative;
+}
+.container .row .img-container .landing-image {
+  display: block;
+  border-right: 2px solid #26a69a;
+  border-top: 2px solid #26a69a;
+  border-top-right-radius: 2rem;
+}
+@media screen and (max-width: 600px) {
+  .container .row .img-container {
+    display: none;
+  }
+}
+.container .row .main-text {
+  font-weight: 600;
+  font-size: 2rem;
+  color: #26a69a;
+}
+.container .row .secondary-text {
+  margin-bottom: 2rem;
+}
+.container .row .landing-button {
+  text-decoration: none;
+  color: #fff;
+  background-color: #26a69a;
+  text-align: center;
+  letter-spacing: 0.5px;
+  padding: 10px 40px;
+  border-radius: 30px;
+  border: none;
+  -webkit-transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
+  cursor: pointer;
+}
+.container .row .landing-button:hover {
+  background-color: #00bfa5;
+}
