@@ -20,6 +20,14 @@ nav .brand-logo {
   color: #262626;
   font-weight: 600;
 }
+nav .brand-logo .logo-pic {
+  margin-right: 0.4em;
+}
+@media screen and (max-width: 480px) {
+  nav .brand-logo {
+    font-size: 1.5rem;
+  }
+}
 nav ul a {
   color: #262626;
   font-weight: 600;
@@ -27,6 +35,11 @@ nav ul a {
 
 .container {
   padding-block: 8em;
+}
+@media screen and (max-width: 600px) {
+  .container {
+    padding-block: 6em;
+  }
 }
 @media screen and (min-width: 1200px) {
   .container .row {
@@ -38,13 +51,13 @@ nav ul a {
 .container .row .img-container {
   position: relative;
 }
-.container .row .img-container img {
+.container .row .img-container .landing-image {
   display: block;
   border-right: 2px solid #26a69a;
   border-top: 2px solid #26a69a;
   border-top-right-radius: 2rem;
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
   .container .row .img-container {
     display: none;
   }
@@ -54,7 +67,10 @@ nav ul a {
   font-size: 2rem;
   color: #26a69a;
 }
-.container .row button {
+.container .row .secondary-text {
+  margin-bottom: 2rem;
+}
+.container .row .landing-button {
   text-decoration: none;
   color: #fff;
   background-color: #26a69a;
@@ -66,8 +82,7 @@ nav ul a {
   -webkit-transition: background-color 0.2s ease-out;
   transition: background-color 0.2s ease-out;
   cursor: pointer;
-  margin-block: 1.5em;
 }
-.container .row button:hover {
+.container .row .landing-button:hover {
   background-color: #00bfa5;
 }

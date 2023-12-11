@@ -17,15 +17,28 @@ nav {
         padding-left: 1.2em;
         padding-right: 1.2em;
     }
-    
+     
     i {
         color: $primary-color-dark;
-    }
+    } 
+
+    // .logo-pic {
+    //     text-shadow: 1px 1px 2px $primary-color;
+    // }
 
     .brand-logo {        
         color: $primary-text-color;
-        font-weight: 600;
+        font-weight: 600;        
+        
+        .logo-pic {
+            margin-right: .4em;
+        }
+
+        @media screen and (max-width: 480px) {
+            font-size: 1.5rem;	
+        }
     }
+    
 
      ul a {
         color: $primary-text-color;
@@ -35,6 +48,11 @@ nav {
 
 .container {
     padding-block: 8em;
+
+    @media screen and (max-width: 600px) {
+    padding-block: 6em;
+
+    }
 
     .row {
 
@@ -48,14 +66,14 @@ nav {
         .img-container {
             position: relative;
             
-            img {
+            .landing-image {
                 display: block;
                 border-right: 2px solid $primary-color-dark;
                 border-top: 2px solid $primary-color-dark;
                 border-top-right-radius: 2rem;
             }
 
-            @media screen and (max-width: 500px) {
+            @media screen and (max-width: 600px) {
                 display: none;
             }
 
@@ -73,9 +91,12 @@ nav {
             color: $primary-color-dark;
         }
 
-        button {
+        .secondary-text {
+            margin-bottom: 2rem;
+        }
+
+        .landing-button {
             @include buttons;
-            margin-block: 1.5em;
         }
     }
 

@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
         type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/landing-page.css' %}" type="text/css">
     <title>Expense Tracker</title>
 </head>
@@ -16,7 +17,8 @@
     <!-- navbar -->
     <nav class="">
         <div class="nav-wrapper">
-            <a href="{% url 'index' %}" class="brand-logo"><i class="fas fa-calculator fa-lg"></i></i>Expense
+            <a href="{% url 'index' %}" class="brand-logo"><i
+                    class="fas fa-calculator logo-pic hide-on-small-only"></i></i>Expense
                 Tracker</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
@@ -41,8 +43,7 @@
 
     <!-- mobile collapse button -->
     <ul class="sidenav" id="mobile-demo">
-        <li><a href="{% url 'index' %}">Home</a></li>
-        <li><a href="{% url 'categories' %}">Categories</a></li>
+        <li><a href="#">Abou</a></li>
         {% if user.is_authenticated %}
         <li class="nav-item">
             <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
@@ -61,29 +62,37 @@
     <main class="container">
         <div class="row">
 
+            <div class="col hide-on-med-and-up">
+                <img class="right responsive-img" src="{% static 'img/lp-img.png' %}" width="450" height="230">
+            </div>
             <!-- text -->
             <div class="col s12 xl6">
                 <p class="main-text">
-                    Your all-in-one solution for managing your finances effortlessly. 
+                    Your all-in-one solution for managing your finances effortlessly.
                 </p>
                 <p class="secondary-text">
-                    Gain insights into your spending, track expenses seamlessly, and achieve financial freedom like never before.
+                    Gain insights into your spending, track expenses seamlessly, and achieve financial freedom like
+                    never before.
                     Easy Tracking: Effortlessly monitor your daily expenses and income in one central hub.
                     Smart Budgeting: Set and achieve your financial goals with our intuitive budgeting tools.
                     Insightful Reports: Analyze your spending patterns and make informed financial decisions.
                     Secure & Convenient: Your financial data is securely encrypted, ensuring peace of mind.
                 </p>
-                <button>Sign Up</button>
+                <a class="landing-button" href="{% url 'account_signup'%}">Sign Up</a>
             </div>
 
             <!-- image -->
             <div class="col s12 xl6 img-container">
-                
                 <img class="right landing-image" src="{% static 'img/lp-img.png' %}" width="450" height="230">
-            
                 <div class="overlay"></div>
             </div>
         </div>
+
+        <!-- videos -->
+        <!-- <div class="row">
+            <div class="col s12"> 
+            </div>
+        </div> -->
 
     </main>
 

@@ -27,11 +27,13 @@
                 <a href="{% url 'index' %}" class="brand-logo">Expense Tracker</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="{% url 'index' %}" title="Home"><i class="material-icons">home</i></a></li>
+                    {% if user.is_authenticated %}
+                    <li><span class="welcome-msg">Welcome, {{ user.username }}!</span></li>
+                    {% endif %}
+                    <li><a href="{% url 'index' %}" title="Dashboard"><i class="material-icons">query_stats</i></a></li>
                     <li><a href="{% url 'categories' %}"><i class="material-icons" title='Categories'>style</i></a></li>
 
                     {% if user.is_authenticated %}
-                    <li><span><em>Welcome, {{ user.username }}</em></span></li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
                     </li>

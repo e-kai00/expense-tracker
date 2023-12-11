@@ -14,6 +14,17 @@ body {
     /* font-family: Quicksand, sans-serif; */
   }
 
+  nav .nav-wrapper {
+    padding-left: 1.2em;
+    padding-right: 1.2em;
+}
+
+.welcome-msg {
+  margin-right: 10px;
+  color: #262626;
+  font-size: .9rem;
+  font-style: oblique;
+}
 
   main {
     flex: 1 0 auto;
