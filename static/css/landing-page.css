@@ -28,22 +28,26 @@ nav ul a {
 .container {
   padding-block: 8em;
 }
-.container .row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+@media screen and (min-width: 1200px) {
+  .container .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 .container .row .img-container {
   position: relative;
 }
 .container .row .img-container img {
   display: block;
+  border-right: 2px solid #26a69a;
+  border-top: 2px solid #26a69a;
+  border-top-right-radius: 2rem;
 }
-.container .row .img-container .overlay {
-  position: absolute;
-  inset: 0;
-  opacity: 0.2;
-  background-color: #00bfa5;
+@media screen and (max-width: 500px) {
+  .container .row .img-container {
+    display: none;
+  }
 }
 .container .row .main-text {
   font-weight: 600;

@@ -37,24 +37,34 @@ nav {
     padding-block: 8em;
 
     .row {
-        display: flex;
-        justify-content: center;
-        align-items: center;       
+
+        @media screen and (min-width: 1200px) {
+            display: flex;
+            justify-content: center;
+            align-items: center;                               
+        }
     
 
         .img-container {
             position: relative;
-
+            
             img {
                 display: block;
+                border-right: 2px solid $primary-color-dark;
+                border-top: 2px solid $primary-color-dark;
+                border-top-right-radius: 2rem;
             }
 
-            .overlay {
-                position: absolute;
-                inset: 0;            
-                opacity: .2;
-                background-color: $primary-color;
+            @media screen and (max-width: 500px) {
+                display: none;
             }
+
+            // .overlay {
+            //     position: absolute;
+            //     inset: 0;            
+            //     opacity: .2;
+            //     background-color: $primary-color;  
+            // }
         }
 
         .main-text {
