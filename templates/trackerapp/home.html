@@ -22,7 +22,7 @@
                 Tracker</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="#" title="Home">About</a></li>
+                <!-- <li><a href="#" title="Home">About</a></li> -->
 
                 {% if user.is_authenticated %}
                 <li><span><em>Welcome, {{ user.username }}</em></span></li>
@@ -43,7 +43,7 @@
 
     <!-- mobile collapse button -->
     <ul class="sidenav" id="mobile-demo">
-        <li><a href="#">Abou</a></li>
+        <!-- <li><a href="#">About</a></li> -->
         {% if user.is_authenticated %}
         <li class="nav-item">
             <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
