@@ -16,6 +16,9 @@ nav .nav-wrapper {
 nav i {
   color: #26a69a;
 }
+nav .login-home {
+  color: #262626;
+}
 nav .brand-logo {
   color: #262626;
   font-weight: 600;
