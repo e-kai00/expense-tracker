@@ -31,11 +31,18 @@ body {
     min-height: 400px;
   }
 
+[type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+    opacity: 1;
+    margin: .45em;
+    pointer-events: auto;
+}
+
+
 
 /* -----------------GENERAL STYLING*/
 
 .brand-logo {
-  font-family: Merienda, sans-serif;    
+  font-family: Quicksand, sans-serif;    
   margin-left: 10px;
 }
 

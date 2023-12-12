@@ -24,7 +24,7 @@
         <!-- top navbar -->
         <nav class="teal accent-4">
             <div class="nav-wrapper">
-                <a href="{% url 'home' %}" class="brand-logo">Expense Tracker</a>
+                <a href="{% url 'home' %}" class="brand-logo"><i class="fas fa-calculator hide-on-small-only"></i> Expense Tracker</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
                     {% if user.is_authenticated %}
@@ -37,10 +37,10 @@
                     {% else %}
                     <li><a href="{% url 'home' %}" title="Home">About</a></li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_signup'%}">Sign Up</a>
+                        <a class="nav-link" href="{% url 'account_login' %}">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+                        <a class="nav-link" href="{% url 'account_signup'%}">Sign Up</a>
                     </li>
                     {% endif %}
                 </ul>
@@ -49,18 +49,19 @@
 
         <!-- mobile collapse button -->
         <ul class="sidenav" id="mobile-demo">
-            <li><a href="{% url 'index' %}">Home</a></li>
-            <li><a href="{% url 'categories' %}">Categories</a></li>
             {% if user.is_authenticated %}
+            <li><a href="{% url 'index' %}">Dashboard</a></li>
+            <li><a href="{% url 'categories' %}">Categories</a></li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
             </li>
             {% else %}
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'account_signup'%}">Sign Up</a>
-            </li>
+            <li><a href="{% url 'home' %}" title="Home">About</a></li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'account_signup'%}">Sign Up</a>
             </li>
             {% endif %}
         </ul>
