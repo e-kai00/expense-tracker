@@ -9,3 +9,4 @@ node_modules/
 cloudinary_python.txt 
 tracker_env/
 *sqlite3
+test-ideas.md
