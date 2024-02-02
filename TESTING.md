@@ -1,5 +1,6 @@
 ## Table of Contents
 
+- [Unit Tests](#unit-tests)
 - [Responsiveness](#responsiveness)
 - [Browser Compatibility](#browser-compatibility)
 - [Bugs](#bugs)
@@ -7,6 +8,46 @@
 - [Validators](#validators)
 - [User Stories](#user-stories)
 - [Features](#features) <br><br>
+
+
+### Unit Tests
+
+The application includes a suite of unit tests to ensure the functionality of its components. These tests cover various aspects of the application, including models and associated views.
+
+To run the unit tests locally, use the following command: `python manage.py test`
+
+Below is a summary of the unit test results:
+
+**Transactions Model**
+  - _test_create_expense_transaction_
+    - Validates the creation of an expense transaction.
+    - Checks user association, expense category, amount, transaction type, date, and notes.
+
+  - _test_create_income_transaction_
+    - Validates the creation of an income transaction.
+    - Checks user association, absence of expense category, amount, transaction type, date, and notes.
+
+**Index View** _(Dashboard)_
+  - _test_render_transactions_
+    - Creates sample income and expense transactions for testing rendering.
+    - Ensures the rendered page contains correct transaction details.
+    - Verifies accurate summing of income transactions.
+    - Validates proper categorization of expenses.
+    - Confirms correct calculation and display of the total balance.
+
+**ExpenseCategories Model and Views**
+  - _test_add_category_
+    - Tests the creation of a new expense category.
+    - Validates user association and the assigned category name.
+
+  - _test_unique_category_per_user_
+    - Ensures that categories with the same name cannot be added for the same user.
+
+  - _test_edit_category_
+    - Tests the ability to edit an existing expense category.
+    - Checks the successful update of the category name.
+
+All tests passed successfully.
 
 
 ### Responsiveness
