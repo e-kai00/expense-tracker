@@ -12,7 +12,7 @@
 
 ### Unit Tests
 
-The application includes a suite of unit tests to ensure the functionality of its components. These tests cover various aspects of the application, including models and associated views.
+The application includes a suite of unit tests to ensure the functionality of its components. These tests cover various aspects of the application, including models and associated views. Test file can be found in [_test_](https://github.com/e-kai00/expense-tracker/tree/main/tests) folder.
 
 To run the unit tests locally, use the following command: `python manage.py test`
 
