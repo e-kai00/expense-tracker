@@ -1,10 +1,34 @@
 ## Expense Tracker app
 
-![Expense tracker app](/readme-img/design/main-screen.png)
+![Expense tracker app](/readme-img/design/expense-tracker-bg-bl.png)
+
+The live link to the website - [Expense Tracker](https://kai00-expense-tracker.herokuapp.com/accounts/login/?next=/) <br>
+
+Feel free to test the app using the provided credentials. Test Credentials: 
+- _Login: test-user_
+- _Password: pass2test_
+
+
+## Table of Contents
+
+- [Concept](#concept)
+- [UX Design](#ux-design)
+  - [Color Scheme](#color-scheme)
+  - [Icons](#icons)
+  - [Typography](#typography)
+  - [Wireframes](#wireframes)
+- [Agile Development](#agile-development)
+- [Features](#features)
+  - [Existing Features](#existing-features)
+  - [Future Features](#future-features)
+- [Technologies](#technologies)
+- [Testing](#testing)
+- [Deployment](#deployment)
+- [Credits](#credits)
+
+## Concept
 
 Effortlessly manage your expenses with Expense Tracker. Designed to be simple and intuitive, it provides a convenient solution to stay on top of your finances. With a clean and minimalist interface, navigating through the app is easy and straightforward. Record, categorize your expenses and gain insights into your spending habits. 
-
-The live link to the website - [Expense Tracker](https://kai00-expense-tracker.herokuapp.com/accounts/login/?next=/) <br><br>
 
 
 ## UX Design
@@ -40,7 +64,7 @@ Two [Google Fonts](https://fonts.google.com/) were used for the app:
 I did initial sketches with paper and pencil and then created more detailed wireframes for desktop and mobiles using [Balsamiq](https://balsamiq.com/). You can find all of the wireframes for this project in [design](https://github.com/e-kai00/expense-tracker/tree/main/readme-img/design/wireframes) folder. <br><br>
 
 
-### Agile Development
+## Agile Development
 I used the Agile methodology for the management of this project. 
 - I utilized 'Issues' functionality on GitHub  to create user stories.
 
@@ -122,7 +146,7 @@ I used the Agile methodology for the management of this project.
 ![404 page](/readme-img/features/404-page.png) <br><br>
 
 
-### Features to Implement
+### Future Features
 
 **Update User Profile**
 - Enable users to change their password, email and delete their profile.
